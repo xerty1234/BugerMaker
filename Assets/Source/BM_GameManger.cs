@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+// 버거 메이커 소스 업데이트
+
 public class BM_GameManger : MonoBehaviour {
 
 	// Use this for initialization
