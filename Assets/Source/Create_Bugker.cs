@@ -33,18 +33,19 @@ public class Create_Bugker : MonoBehaviour
     //버거의 카피 오브젝트를 저장하고 있는 배열
     //public GameObject[] BM_Cpy_Node;
 
+    int test = 0;
 
-	void Start ()
+
+    int Create_BugNode ()
     {
-        
         aButton_Pos = new Vector3[MAX_Width, MAX_Height];
         int index = 0;
         int Count = 0;
-       
+
 
 
         // 게임이 시작과 동시에 배열안에다가 각 위치의 값을 넣어준는 for문
-        for (int i =0;i < MAX_Width; i++)
+        for (int i = 0; i < MAX_Width; i++)
         {
             index = 0;
             // 각 배열의 값을 넣어주는 부분 
@@ -63,31 +64,52 @@ public class Create_Bugker : MonoBehaviour
                 aButton_Pos[i, index].z = 0;
 
                 //for 문이 진행되면서 위치값이 변화하기 때문에 변형된 값을 처리하는 부분 (세로)
-                Start_Height = Start_Height + H_length;
+                Start_Height = Start_Height - H_length;
             }
         }
 
-      
 
+        // 버거노드의 가로의 값만큼 생성
         for (int i = 0; i < MAX_Width; i++)
         {
-             
-            index = 0;
-              
-            // node의 값을 복사 생성 (기존의 노드값을 복사)
-            Instantiate(BM_original_Node[index], aButton_Pos[i, index], Quaternion.identity);
-     
-            // count의 값을 증가함으로써 node의 값을 변형시키기위한 인덱스 변수 증가
-            Count++;
 
-            for (index = 0; index < MAX_Height; index++)
-            {
+            index = 0;
+
+            // node의 값을 복사 생성 (기존의 노드값을 복사)
+            //Instantiate(childrenPrefab).transform.SetParent(transform)
+            // UI를 복사하기 위하여, (그냥 복사를 하게되면 이미지가 보이지 않는다)
+            // canvars 객체의 및에 있어야 이미지가 보이게 됨으로 현 캔버스 위치에 있는 복사 원본의 위치값 또한 같이 복사해준다.
+            Vector3 temp;
+            temp.x = Start_Width;
+            temp.y = Start_Height;
+            temp.z = 0;
+            Instantiate(BM_original_Node[index], temp, Quaternion.identity).transform.SetParent(transform);
+            
+
+            //Instantiate(temp, aButton_Pos[i, index], Quaternion.identity);
+            // count의 값을 증가함으로써 node의 값을 변형시키기위한 인덱스 변수 증가
+           // Count++;
+
+            // 버거노드의 세로의 값만큼 생성
+          //  for (index = 0; index < MAX_Height; index++)
+          //  {
                 // node의 값을 복사 생성 (기존의 노드값을 복사)
-                Instantiate(BM_original_Node[index], aButton_Pos[i, index], Quaternion.identity);
+          //      Instantiate(BM_original_Node[index], aButton_Pos[i, index], Quaternion.identity).transform.SetParent(transform);
                 // count의 값을 증가함으로써 node의 값을 변형시키기위한 인덱스 변수 증가
-                Count++;
-            }
+          //      Count++;
+          //  }
         }
+
+        return 1;
+
+    }
+
+        
+
+	void Start ()
+    {
+        
+      
 
 
 
@@ -96,11 +118,11 @@ public class Create_Bugker : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        if (Input.GetMouseButton(0))
+
+        if (test == 0)
         {
-            Debug.Log(Input.mousePosition.x);
-            Debug.Log(Input.mousePosition.y);
+            test = Create_BugNode();
         }
 
-	}
+    }
 }
