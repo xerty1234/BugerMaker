@@ -16,9 +16,9 @@ public class Create_Bugker : MonoBehaviour
     public int MAX_Height;
 
     // 버거노드의 시작 가로 위치
-    public int Start_Width;
+    public float Start_Width;
     //버거 노드의 시작 세로 위치
-    public int Start_Height;
+    public float Start_Height;
     // 버거 노드간의 거리 가로
     public int W_length;
     // 버거 노드간의 거리 세로
@@ -38,23 +38,24 @@ public class Create_Bugker : MonoBehaviour
 
     int Create_BugNode ()
     {
+        // 위치값 저정을 위한 Vector3 배열생성 
         aButton_Pos = new Vector3[MAX_Width, MAX_Height];
+        //참조를 위한 인덱스 값 선언 (위치값 y)
         int index = 0;
+        // 버거 노드의 생성을 위한 인덱스 값  (1씩 증가하면서 13까지 증가) 
         int Count = 0;
 
+        float Last_Y_Pos = Start_Height;
 
-
+        
         // 게임이 시작과 동시에 배열안에다가 각 위치의 값을 넣어준는 for문
         for (int i = 0; i < MAX_Width; i++)
         {
+            // 인덱스 변수 초기화
             index = 0;
-            // 각 배열의 값을 넣어주는 부분 
-            aButton_Pos[i, index].x = Start_Width;
-            aButton_Pos[i, index].y = Start_Height;
-            aButton_Pos[i, index].z = 0;
+            // 기존에 변경되었던 변수 초기화
+            Start_Height = Last_Y_Pos;
 
-            //for 문이 진행되면서 위치값이 변화하기 때문에 변형된 값을 처리하는 부분 (가로)
-            Start_Width = Start_Width + W_length;
 
             for (index = 0; index < MAX_Height; index++)
             {
@@ -66,41 +67,49 @@ public class Create_Bugker : MonoBehaviour
                 //for 문이 진행되면서 위치값이 변화하기 때문에 변형된 값을 처리하는 부분 (세로)
                 Start_Height = Start_Height - H_length;
             }
+
+            //for 문이 진행되면서 위치값이 변화하기 때문에 변형된 값을 처리하는 부분 (가로)
+            Start_Width = Start_Width + W_length;
         }
 
 
         // 버거노드의 가로의 값만큼 생성
         for (int i = 0; i < MAX_Width; i++)
         {
-
-            index = 0;
-
-            // node의 값을 복사 생성 (기존의 노드값을 복사)
-            //Instantiate(childrenPrefab).transform.SetParent(transform)
-            // UI를 복사하기 위하여, (그냥 복사를 하게되면 이미지가 보이지 않는다)
-            // canvars 객체의 및에 있어야 이미지가 보이게 됨으로 현 캔버스 위치에 있는 복사 원본의 위치값 또한 같이 복사해준다.
+            //변수를 접근하기 위한 오브젝트 변수
+            GameObject tempObject;
+            // 위치값 저장을 위한 임시 변수
             Vector3 temp;
-            temp.x = Start_Width;
-            temp.y = Start_Height;
+
+            // 저장해 놓았던 변수입력
+            temp.x = aButton_Pos[i, 0].x;
+            temp.y = aButton_Pos[i, 0].y;
             temp.z = 0;
-            Instantiate(BM_original_Node[index], temp, Quaternion.identity).transform.SetParent(transform);
-            
 
-            //Instantiate(temp, aButton_Pos[i, index], Quaternion.identity);
-            // count의 값을 증가함으로써 node의 값을 변형시키기위한 인덱스 변수 증가
-           // Count++;
+            // 버거 노드의 세로의 값만큼 생성
+            for (index = 0; index < MAX_Height; index++)
+            {
+                temp.x = aButton_Pos[i, index].x;
+                temp.y = aButton_Pos[i, index].y;
+                temp.z = 0;
 
-            // 버거노드의 세로의 값만큼 생성
-          //  for (index = 0; index < MAX_Height; index++)
-          //  {
-                // node의 값을 복사 생성 (기존의 노드값을 복사)
-          //      Instantiate(BM_original_Node[index], aButton_Pos[i, index], Quaternion.identity).transform.SetParent(transform);
-                // count의 값을 증가함으로써 node의 값을 변형시키기위한 인덱스 변수 증가
-          //      Count++;
-          //  }
+                tempObject = Instantiate(BM_original_Node[Count], Vector3.zero, Quaternion.identity);
+
+                //캔버스를 부모로 설정해주는 부분 이 문장을 넣어야 canvars 위치값으로 설정이 가능하다.
+                tempObject.transform.SetParent(transform);
+
+                // 위치값을 설정해 준다.
+                tempObject.GetComponent<RectTransform>().localPosition = temp;
+                // 크기를 설정해준다.
+                tempObject.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 0);
+
+                Count++;
+                Count = Count % 13;
+
+            }
         }
-
         return 1;
+
 
     }
 
