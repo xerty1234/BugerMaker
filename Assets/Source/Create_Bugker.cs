@@ -35,6 +35,31 @@ public class Create_Bugker : MonoBehaviour
 
     int test = 0;
 
+    public Vector2 Check_Button ( float x, float y)
+    {
+        Vector2 temp = new Vector2(0,0);
+        int Width, height = 0;
+       
+
+        for (Width = 0; Width < MAX_Width; Width++)
+        {
+            for (height = 0; height < MAX_Height; height++)
+            {
+                if (aButton_Pos[Width, height].x == x && aButton_Pos[Width, height].y == y)
+                {
+                    temp.x = Width;
+                    temp.y = height;
+                    return temp;
+                }
+            }
+        }
+
+        
+
+        return temp;
+        
+    }
+
 
     int Create_BugNode ()
     {
