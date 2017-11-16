@@ -2,16 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
+
 public class BM_Button_Mgr : MonoBehaviour {
 
-
-
-  
-
- 
+    public int NodeNum;
 
     // 버튼이 선택 될시 해당 버튼 노드 삭제와 노드 위치 변경 및, 새로운 노드 생성을 담당하는 함수
-   public  void Select_Button ()
+    public  void Select_Button ()
     {
         Vector3 temp;
         Vector2 Result;
@@ -33,6 +32,7 @@ public class BM_Button_Mgr : MonoBehaviour {
     {
         int x, y = 0;
         int temp;
+  
         x = (int) BPos.x;
         y = (int) BPos.y;
 
@@ -44,30 +44,43 @@ public class BM_Button_Mgr : MonoBehaviour {
 
         else
         {
+            // 노드를 삭제하는 함수
             Destroy(GameObject.Find("BackGround").GetComponent<Create_Bugker>().LBug_Node[temp]);
+            // 노드를 리스트에서 제거하는 함수
             GameObject.Find("BackGround").GetComponent<Create_Bugker>().LBug_Node.RemoveAt(temp);
-
+            // 어떤 노드가 삭제되어서 그 값을 삭제해주는 함수
+            GameObject.Find("BackGround").GetComponent<Create_Bugker>().Count_Delete_BugNode(NodeNum);
         }
            
     }
 
+    
+
+    // 버거의 위치를 바꾸어주는 함수
     void Change_of_location(Vector2 Pos)
     {
 
         int x, y;
+        int index;
         x = (int)Pos.x;
         y = (int)Pos.y;
 
-       
+        // 어떤 노드가 생성이 되어야 하는지 알려주는 문장
+        index = GameObject.Find("BackGround").GetComponent<Create_Bugker>().Create_Node_generator();
 
         if (y == 0)
         {
-            GameObject.Find("BackGround").GetComponent<Create_Bugker>().Create_Bug_Node(x, y, 1);
+            // 첫번째 노드가 눌렸을때 첫번째 자리에 노드 생성
+            GameObject.Find("BackGround").GetComponent<Create_Bugker>().Create_Bug_Node(x, y, index);
         }
 
+        // 첫번째가 아닌 노드가 눌렸을때
         else
         {
-            GameObject.Find("BackGround").GetComponent<Create_Bugker>().Create_Bug_Node(x, 0, 1);
+            // 노드 생성
+            GameObject.Find("BackGround").GetComponent<Create_Bugker>().Create_Bug_Node(x, 0, index);
+
+            // 그리고 노드의 자리를 이동해준다.
             for (int i=y; i>0; i--)
             {
                 GameObject.Find("BackGround").GetComponent<Create_Bugker>().Change_Bug(x, i);

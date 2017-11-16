@@ -32,9 +32,41 @@ public class Create_Bugker : MonoBehaviour
     // 버거의 오브젝트를 저장하고 있는 오브젝트 행렬
     public GameObject [] BM_original_Node;
 
-   
+     int[] NodeCount; 
 
-    int test = 0;
+
+    // 모든 노드에 값이 있으면 랜덤으로 하나를 생성하고
+    // 노드에 값이 없으면 그 값을 생성 하는 함수
+    public void Count_Add_BugNode (int index)
+    {
+        NodeCount[index] += 1;
+    }
+
+    // 노드의 값을 삭제하는 함수
+    public void Count_Delete_BugNode ( int index)
+    {
+        NodeCount[index] -= 1;
+    }
+
+
+
+    public int Create_Node_generator ()
+    {
+        int temp;
+
+        for (int i=0; i< MAX_BUTTON; i++)
+        {
+            if (NodeCount[i] == 0)
+            {
+                temp = i;
+                return temp;
+            }
+        }
+
+        temp = Random.Range(0, 13);
+        return temp;
+
+    }
 
     // 버거의 위치로 포지션의 값을 구하는 함수 
     public Vector2 Return_Bug_Positon(int x, int y)
@@ -102,8 +134,10 @@ public class Create_Bugker : MonoBehaviour
         // 버거의 노드를  리스트에 넣어준다.
         LBug_Node.Add(tempObject);
 
-    }
+        // 버거노드가 얼마나 있는지를 판단하는 배열에 값을 넣어준다.
+        Count_Add_BugNode(Count);
 
+    }
 
     // 터치된 버거노드의 위치를 알려주는 함수 
     // 선택된 위치값과 원래의 위치값이 같으면 그 노드가 선택되어있는 것임으로 for로 서치해서 인덱스를 리턴해준다.
@@ -149,7 +183,6 @@ public class Create_Bugker : MonoBehaviour
 
     }
 
-
     // 버거노드의 위치를 바꾸어주는 함수
     public void Change_Bug ( int Xindex, int Yindex)
     {
@@ -176,11 +209,13 @@ public class Create_Bugker : MonoBehaviour
 
     }
 
-
+    // 버거를 처음 생성하는 함수
     int Create_BugNode ()
     {
         // 위치값 저정을 위한 Vector3 배열생성 
         aButton_Pos = new Vector3[MAX_Width, MAX_Height];
+        NodeCount = new int[MAX_BUTTON];
+
         //참조를 위한 인덱스 값 선언 (위치값 y)
         int index = 0;
         // 버거 노드의 생성을 위한 인덱스 값  (1씩 증가하면서 13까지 증가) 
@@ -188,6 +223,13 @@ public class Create_Bugker : MonoBehaviour
 
         float Last_Y_Pos = Start_Height;
         LBug_Node = new List< GameObject >();
+
+
+        // 노드 카운터를 초기화 시키는 함수
+        for (int i =0; i< MAX_BUTTON; i++ )
+        {
+            NodeCount[i] = 0;
+        }
 
         
         // 게임이 시작과 동시에 배열안에다가 각 위치의 값을 넣어준는 for문
@@ -233,7 +275,7 @@ public class Create_Bugker : MonoBehaviour
             {
 
                 Create_Bug_Node(i, index, Count);
-              
+                
                 Count++;
                 Count = Count % 13;
             }
@@ -248,6 +290,7 @@ public class Create_Bugker : MonoBehaviour
 
 	void Start ()
     {
+
         Create_BugNode();
     }
 	
