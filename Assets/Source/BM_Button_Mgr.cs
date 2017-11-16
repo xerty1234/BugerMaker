@@ -24,37 +24,31 @@ public class BM_Button_Mgr : MonoBehaviour {
         Debug.Log(Result);
 
         // 클릭된 버거를 삭제하는 함수 (클릭된 위치정보)
-        Remove_BugNode(temp);
+        Remove_BugNode(Result);
         Change_of_location(Result);
     }
 
     // 클릭된 버거를 삭제하는 함수 
-    void Remove_BugNode(Vector3 BPos)
+    void Remove_BugNode(Vector2 BPos)
     {
-        // 버거들의 위치정보를 가지고 있는 임시변수
-        Vector3 BugPos;
-        // 리스트의 크기를 가지고 있는 임시변수 
-        int NodeSize = 0;
+        int x, y = 0;
+        int temp;
+        x = (int) BPos.x;
+        y = (int) BPos.y;
 
-        // 리스트의 크기를 가져오는 함수 
-        NodeSize = GameObject.Find("BackGround").GetComponent<Create_Bugker>().LBug_Node.Count;
+       temp =  GameObject.Find("BackGround").GetComponent<Create_Bugker>().Saarch_Bug(x,y);
 
-        // 리스트 사이즈 만큼 탐색을 한다.
-        for (int i = 0; i < NodeSize; i++)
+        // 오류가 나오게 되면 1000을 리턴함으로 오류 문장 삽입 예정
+        if (temp == 1000)
+            return;
+
+        else
         {
-            // 리스트를 탐색하여 위치값을 가져오는 문장
-            BugPos = GameObject.Find("BackGround").GetComponent<Create_Bugker>().LBug_Node[i].GetComponent<RectTransform>().localPosition;
-
-            // 만약 클릭한 사이즈와 노드의 값이 같다면 그 노드를 삭제시키는 문장
-            if (BPos.x == BugPos.x && BPos.y == BugPos.y)
-            {
-
-                Destroy(GameObject.Find("BackGround").GetComponent<Create_Bugker>().LBug_Node[i]);
-                GameObject.Find("BackGround").GetComponent<Create_Bugker>().LBug_Node.RemoveAt(i);
-                return;
-            }
+            Destroy(GameObject.Find("BackGround").GetComponent<Create_Bugker>().LBug_Node[temp]);
+            GameObject.Find("BackGround").GetComponent<Create_Bugker>().LBug_Node.RemoveAt(temp);
 
         }
+           
     }
 
     void Change_of_location(Vector2 Pos)
@@ -64,6 +58,8 @@ public class BM_Button_Mgr : MonoBehaviour {
         x = (int)Pos.x;
         y = (int)Pos.y;
 
+       
+
         if (y == 0)
         {
             GameObject.Find("BackGround").GetComponent<Create_Bugker>().Create_Bug_Node(x, y, 1);
@@ -71,8 +67,10 @@ public class BM_Button_Mgr : MonoBehaviour {
 
         else
         {
-            for (int i=y; i==0; i--)
+            GameObject.Find("BackGround").GetComponent<Create_Bugker>().Create_Bug_Node(x, 0, 1);
+            for (int i=y; i>0; i--)
             {
+                GameObject.Find("BackGround").GetComponent<Create_Bugker>().Change_Bug(x, i);
 
             }
         }

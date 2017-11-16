@@ -105,6 +105,78 @@ public class Create_Bugker : MonoBehaviour
     }
 
 
+    // 터치된 버거노드의 위치를 알려주는 함수 
+    // 선택된 위치값과 원래의 위치값이 같으면 그 노드가 선택되어있는 것임으로 for로 서치해서 인덱스를 리턴해준다.
+    public int Saarch_Bug ( int Xindex, int Yindex)
+    {
+        // 노드의 사이즈 임시변수
+        int NodeSize;
+        //변환될 노드의 인덱스 임시변수
+        int temp;
+        // 비교할 위치값 (배열의 저장되어 있는 변수의 값으로 비교 ) 
+        Vector3 BugPos;
+        // 선택된 위치값 
+        Vector3 BPos;
+
+        // 비교 대상인 변수를 임시변수에 저장하는 부분
+        BPos.x = aButton_Pos[Xindex, Yindex].x;
+        BPos.y = aButton_Pos[Xindex, Yindex].y;
+        BPos.z = 0;
+
+        // 만약 서치가 되지 않으면 1000을 이용하여 오류체크
+        temp = 1000;
+
+        // 노드의 크기를 알아오는 함수
+        NodeSize = GameObject.Find("BackGround").GetComponent<Create_Bugker>().LBug_Node.Count;
+
+
+        // 리스트 사이즈 만큼 탐색을 한다.
+        for (int i = 0; i < NodeSize; i++)
+        {
+            // 리스트를 탐색하여 위치값을 가져오는 문장
+            BugPos = GameObject.Find("BackGround").GetComponent<Create_Bugker>().LBug_Node[i].GetComponent<RectTransform>().localPosition;
+
+            // 만약 클릭한 사이즈와 노드의 값이 같다면 그노드의 위치값을 알려주는 함수
+            if (BPos.x == BugPos.x && BPos.y == BugPos.y)
+            {
+                temp = i;
+                return temp;
+            }
+
+        }
+
+        return temp;
+
+    }
+
+
+    // 버거노드의 위치를 바꾸어주는 함수
+    public void Change_Bug ( int Xindex, int Yindex)
+    {
+        GameObject tempObject;
+        Vector3 temp;
+        int bug_index;
+
+        // 0일때 리턴하는 함수
+        if (Yindex == 0)
+            return;
+
+        temp.x = aButton_Pos[Xindex, Yindex].x;
+        temp.y = aButton_Pos[Xindex, Yindex].y;
+        temp.z = 0;
+
+        // 어느 버거노드에 있는지 index변수를 알아야 한다.
+        bug_index = Saarch_Bug(Xindex, Yindex-1);
+
+        tempObject = LBug_Node[bug_index];
+
+        // 위치를 수정해준다.
+        tempObject.GetComponent<RectTransform>().localPosition = temp;
+
+
+    }
+
+
     int Create_BugNode ()
     {
         // 위치값 저정을 위한 Vector3 배열생성 
