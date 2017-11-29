@@ -24,6 +24,9 @@ public class Create_Bugker : MonoBehaviour
     // 버거 노드간의 거리 세로
     public int H_length;
 
+    // 버거노드의 이동 스피드
+    public int MoveSpeed_Animation;
+
     // 총 버거의 위치값을 저장하고 있는 배열
     public Vector3[,] aButton_Pos;
 
@@ -32,8 +35,21 @@ public class Create_Bugker : MonoBehaviour
     // 버거의 오브젝트를 저장하고 있는 오브젝트 행렬
     public GameObject [] BM_original_Node;
 
+
+
      int[] NodeCount; 
 
+    // 버거의 위치이동할때 에니메이션을 위하여 만든 구조체
+    // 위치값과 해당 노드의 인덱스
+    struct AnimationNode
+    {
+       public int x;
+       public int y;
+       public  int index;
+    };
+
+    // 에니메이션에 해당되는 노드들이 들어가있는 리스트 
+    List<AnimationNode> ANode;
 
     // 모든 노드에 값이 있으면 랜덤으로 하나를 생성하고
     // 노드에 값이 없으면 그 값을 생성 하는 함수
@@ -49,11 +65,12 @@ public class Create_Bugker : MonoBehaviour
     }
 
 
-
+    // 어떤 버거노드를 생성 할지를 결정하는 함수
     public int Create_Node_generator ()
     {
         int temp;
 
+        // 13개의 노드중에 없는것을 우선 찾고 그 값을 리턴해준다.
         for (int i=0; i< MAX_BUTTON; i++)
         {
             if (NodeCount[i] == 0)
@@ -62,7 +79,7 @@ public class Create_Bugker : MonoBehaviour
                 return temp;
             }
         }
-
+        // 만약 모든 값이 있다면 랜덤으로 값을 넣어준다.
         temp = Random.Range(0, 13);
         return temp;
 
@@ -82,18 +99,23 @@ public class Create_Bugker : MonoBehaviour
     }
 
     // 버거노드가 체크되면 어디서 체크 되었는지를 반환하는 변수 (값이 있으면 값을 리턴 값이 없으면 0을 리턴)
-    public Vector2 Check_Button ( float x, float y)
+    public Vector2 Check_Button (Vector3 target)
     {
         Vector2 temp = new Vector2(0,0);
         int Width, height = 0;
-       
-
+      
+   
         for (Width = 0; Width < MAX_Width; Width++)
         {
             for (height = 0; height < MAX_Height; height++)
             {
                 // 체크가 되면 위치를 넘기고 함수를 종료한다.
-                if (aButton_Pos[Width, height].x == x && aButton_Pos[Width, height].y == y)
+                // y 체크 값 버그로 인한 수정 기존 == 수정 >= <= 범위 값 체크
+                // Vector3의 y의 값에 버그로 인한 수정  = 값이 조금씩 변경되는 버그
+                if (target.x >= aButton_Pos[Width, height].x - 5
+                     && target.x <= aButton_Pos[Width, height].x + 5
+                    && target.y >= aButton_Pos[Width, height].y -5
+                    && target.y <= (aButton_Pos[Width, height].y + 5))
                 {
                     temp.x = Width;
                     temp.y = height;
@@ -171,7 +193,10 @@ public class Create_Bugker : MonoBehaviour
             BugPos = GameObject.Find("BackGround").GetComponent<Create_Bugker>().LBug_Node[i].GetComponent<RectTransform>().localPosition;
 
             // 만약 클릭한 사이즈와 노드의 값이 같다면 그노드의 위치값을 알려주는 함수
-            if (BPos.x == BugPos.x && BPos.y == BugPos.y)
+            if (BPos.x >= BugPos.x - 5 
+                && BPos.x <= BugPos.x + 5
+                && BPos.y >= BugPos.y - 5
+                && BPos.y <= BugPos.y + 5)
             {
                 temp = i;
                 return temp;
@@ -186,28 +211,88 @@ public class Create_Bugker : MonoBehaviour
     // 버거노드의 위치를 바꾸어주는 함수
     public void Change_Bug ( int Xindex, int Yindex)
     {
-        GameObject tempObject;
-        Vector3 temp;
-        int bug_index;
+
+       
+        AnimationNode temp;
+        int Bug = 0;
 
         // 0일때 리턴하는 함수
         if (Yindex == 0)
             return;
 
-        temp.x = aButton_Pos[Xindex, Yindex].x;
-        temp.y = aButton_Pos[Xindex, Yindex].y;
-        temp.z = 0;
+        // 해당 노드를 애니메이션 리스트에 저장하는 함수
+        temp.x = Xindex;
+        temp.y = Yindex;
+        temp.index = Saarch_Bug(Xindex, Yindex - 1);
 
-        // 어느 버거노드에 있는지 index변수를 알아야 한다.
-        bug_index = Saarch_Bug(Xindex, Yindex-1);
-
-        tempObject = LBug_Node[bug_index];
-
-        // 위치를 수정해준다.
-        tempObject.GetComponent<RectTransform>().localPosition = temp;
-
+        ANode.Add(temp);
 
     }
+
+    // 에니메이션 리스에 저장 되어 있는 노드들을 처리하는 함수
+    void Check_Animation ()
+    {
+        int index;
+
+        // 노드의 값이 없으면 해당 함수를 종료한다.
+        if (ANode.Count == 0)
+            return;
+
+        // 노드 갯수만큼 애니메이션 처리를 해야하기 때문에 for문을 이용한 애니메이션 처리
+        for (int i=0;i < ANode.Count; i++)
+        {
+            // 각 노드의 값을 함수에 전달 애니메이션을 처리하는 함수 애니메이션이 끝이나면 index :1 이면 애니메이션 종료
+            index = Change_Animation(ANode[i].x, ANode[i].y, ANode[i].index);
+
+            // 1이면 더이상 애니메이션을 할 이유가 없으므로 해당 노드를 리스트에서 정리해준다.
+            if (index == 1)
+            {
+                ANode.RemoveAt(i);
+            }
+         
+        }
+
+    }
+
+    // 해당 노드의 애니메이션 처리하는 함수 (Animationnode의 인자값을 받는다)
+    int Change_Animation (int x , int y, int index)
+    {
+        // 게임오브젝트의 값을 받아오는 함수
+        GameObject tempObject;
+        // 현재 위치값을 가지고 있는 변수
+        Vector3 Current_Pos;
+        // 목적지 위치값을 가지고 있는 변수
+        Vector3 Last_Pos;
+
+        // 인덱스 값을 이용 변화해야하는 오브젝트 값을 가져온다.
+        tempObject = LBug_Node[index];
+
+        // 오브젝트에서 현재 오브젝트의 위치값을 가져온다.
+        Current_Pos = tempObject.GetComponent<RectTransform>().localPosition;
+
+        // 인덱스 값을 이용하여 목적지 위치값을 가져온다.
+        Last_Pos.x = aButton_Pos[x, y].x;
+        Last_Pos.y = aButton_Pos[x, y].y;
+        Last_Pos.z = 0;
+
+
+        // 현제 위치값과 목적지 위치값이 벗어난다면 도착을 한것이기 때문에 도착판단을 하고 목적지 값을 넣어준다.
+        if (Current_Pos.y <= Last_Pos.y)
+        {
+            Current_Pos = Last_Pos;
+            tempObject.GetComponent<RectTransform>().localPosition = Current_Pos;
+            return 1;
+        }
+
+        // 아니라면 애니메이션 이동 값 만큼 위치를 이동해주고 해당 이동값을 오브젝트에 저장한다.
+        else
+        {
+            Current_Pos.y += -MoveSpeed_Animation;
+            tempObject.GetComponent<RectTransform>().localPosition = Current_Pos;
+            return 0;
+        }
+    }
+
 
     // 버거를 처음 생성하는 함수
     int Create_BugNode ()
@@ -223,6 +308,7 @@ public class Create_Bugker : MonoBehaviour
 
         float Last_Y_Pos = Start_Height;
         LBug_Node = new List< GameObject >();
+        ANode = new List<AnimationNode>();
 
 
         // 노드 카운터를 초기화 시키는 함수
@@ -290,14 +376,13 @@ public class Create_Bugker : MonoBehaviour
 
 	void Start ()
     {
-
         Create_BugNode();
+      
     }
 	
 	// Update is called once per frame
 	void Update ()
     {
-
-
+        Check_Animation();
     }
 }
