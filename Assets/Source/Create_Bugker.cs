@@ -260,8 +260,7 @@ public class Create_Bugker : MonoBehaviour
         // 버거노드의 가로의 값만큼 생성
         for (int i = 0; i < MAX_Width; i++)
         {
-            //변수를 접근하기 위한 오브젝트 변수
-            GameObject tempObject;
+           
             // 위치값 저장을 위한 임시 변수
             Vector3 temp;
 
