@@ -21,6 +21,7 @@ public class BM_Making_Bug : MonoBehaviour {
 
     public int Order_Bugker (int [] Bugker)
     {
+      
         int temp;
         int NodeSize;
 
@@ -57,7 +58,9 @@ public class BM_Making_Bug : MonoBehaviour {
             return 1;
         else
             return 0;
+            
     }
+
 
     // Use this for initialization
     void Start ()

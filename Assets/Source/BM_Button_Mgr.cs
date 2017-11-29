@@ -17,7 +17,7 @@ public class BM_Button_Mgr : MonoBehaviour {
         
       
         temp = this.GetComponent<RectTransform>().localPosition;
-        Result = GameObject.Find("BackGround").GetComponent<Create_Bugker>().Check_Button(temp.x, temp.y);
+        Result = GameObject.Find("BackGround").GetComponent<Create_Bugker>().Check_Button(temp);
 
         // 여기서 버거의 노드를 정리하는 문장을 만드러야 한다.
         Debug.Log(Result);
