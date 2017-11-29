@@ -5,10 +5,14 @@ using UnityEngine;
 public class BM_Making_Bug : MonoBehaviour {
 
     public int Bugker_Count;
+    public int[] Normal_Bugker;
     public int [] Steak_Bugker;
     public int [] Pineapple_Bugker;
     public int [] Bacon_Bugker;
-    public int [] Normal_Bugker;
+    public int [] Null_Bugker;
+
+    
+
 
     // 노드들을 탐색해서 버거를 만들수 있는가??
     // 버거를 탐색을 한 다음 해당 버거의 첫번째를 이미지를 띄운다.
@@ -17,7 +21,45 @@ public class BM_Making_Bug : MonoBehaviour {
     // 버거를 완성하면 버거를 사라지게 만들고 점수가 올라가고 처음 루틴으로 돌아간다.
 
 
+    int[] GetSelect_Bugker(int Num)
+    {
+        switch(Num)
+        {
+            case 0: return Normal_Bugker;        
+            case 1: return Pineapple_Bugker;    
+            case 2: return Bacon_Bugker;    
+            case 3: return Steak_Bugker;    
+            default:  return Null_Bugker; 
+        }
+       
+    }
 
+    void Create_Bugker ()
+    {
+
+        int temp;
+        int[]  CreateBug  = new int[Bugker_Count];
+
+        temp = 100;
+        for (int i=0; i< Bugker_Count; i++)
+        {
+            CreateBug[i] = 0;
+        }
+      
+        for (int i=0; i< Bugker_Count; i++)
+        {
+            CreateBug[i] = Order_Bugker(GetSelect_Bugker(i));
+        }
+
+        while(true)
+        {
+            temp = Random.Range(0, 3);
+            if (CreateBug[temp] != 0)
+                break;
+        }
+
+
+    }
 
     public int Order_Bugker (int [] Bugker)
     {
@@ -30,23 +72,28 @@ public class BM_Making_Bug : MonoBehaviour {
    
         temp = 0;
 
+        // 버거 노드 탐색 문
+        // 버거 노드의 리스트화 (스택 처럼 사용)
         Search_BugNode = new List<int>();
 
-    
+        // 버거 노드를 전부 순회하기 위한 사이즈 
         NodeSize = GameObject.Find("BackGround").GetComponent<Create_Bugker>().LBug_Node.Count;
 
-
+        
+        // 완성된 버거의 노드를 저장하는 문장
         for (int i = 0; i < Bugker.Length; i++)
         {
             Search_BugNode.Add(Search_BugNode[i]);
-
         }
 
+        // 버거 노드를 순회하면서 해당 버거가 만들어져도 되는지 노드를 순회하여 알아보는 문장
         for (int i=0; i<NodeSize; i++)
         {
+            // 해당 노드의 변수를 알아오는 함수
             temp = GameObject.Find("BackGround").GetComponent<Create_Bugker>().LBug_Node[i].GetComponent<BM_Button_Mgr>().NodeNum;
             for (int j=0; j< Search_BugNode.Count; j++)
             {
+                // 같이 같다면 해당 변수를 지워준다.
                 if (temp == Search_BugNode[j])
                 {
                     Search_BugNode.RemoveAt(j);
@@ -54,8 +101,10 @@ public class BM_Making_Bug : MonoBehaviour {
             }
         }
 
+        // 만들어저도 된다면 모든값이 지워짐으로 Count는 0이된다.
         if (Search_BugNode.Count == 0)
             return 1;
+        // 노드값이 있으면 Count가 0이 아님으로 0을 리턴한다.
         else
             return 0;
             
