@@ -14,16 +14,13 @@ public class BM_Button_Mgr : MonoBehaviour {
     {
         Vector3 temp;
         Vector2 Result;
-
-     
-
+        
+      
         temp = this.GetComponent<RectTransform>().localPosition;
-    
-
-        Result = GameObject.Find("BackGround").GetComponent<Create_Bugker>().Check_Button(temp);
+        Result = GameObject.Find("BackGround").GetComponent<Create_Bugker>().Check_Button(temp.x, temp.y);
 
         // 여기서 버거의 노드를 정리하는 문장을 만드러야 한다.
-        //Debug.Log(Result);
+        Debug.Log(Result);
 
         // 클릭된 버거를 삭제하는 함수 (클릭된 위치정보)
         Remove_BugNode(Result);
