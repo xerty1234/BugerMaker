@@ -9,9 +9,12 @@ public class BM_Making_Bug : MonoBehaviour {
     public int [] Steak_Bugker;
     public int [] Pineapple_Bugker;
     public int [] Bacon_Bugker;
+
     public int [] Null_Bugker;
 
-    
+
+    public GameObject[] Bugker;
+    public int BugNum;
 
 
     // 노드들을 탐색해서 버거를 만들수 있는가??
@@ -41,6 +44,7 @@ public class BM_Making_Bug : MonoBehaviour {
         int[]  CreateBug  = new int[Bugker_Count];
 
         temp = 100;
+
         for (int i=0; i< Bugker_Count; i++)
         {
             CreateBug[i] = 0;
@@ -66,11 +70,13 @@ public class BM_Making_Bug : MonoBehaviour {
       
         int temp;
         int NodeSize;
+        int Count;
 
         List<int> Search_BugNode;
 
    
         temp = 0;
+        Count = 0;
 
         // 버거 노드 탐색 문
         // 버거 노드의 리스트화 (스택 처럼 사용)
@@ -84,6 +90,16 @@ public class BM_Making_Bug : MonoBehaviour {
         for (int i = 0; i < Bugker.Length; i++)
         {
             Search_BugNode.Add(Search_BugNode[i]);
+            if (Search_BugNode[i] == 0)
+            {
+                Count++;
+            }
+
+        }
+
+        if (Count <= 6)
+        {
+            return 0;
         }
 
         // 버거 노드를 순회하면서 해당 버거가 만들어져도 되는지 노드를 순회하여 알아보는 문장
