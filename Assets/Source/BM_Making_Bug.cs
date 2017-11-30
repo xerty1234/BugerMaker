@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+// 각 버거가 어떤 버거가 생성이 되어야 하는지 알려주는 함수
+
 public class BM_Making_Bug : MonoBehaviour {
 
     public int Bugker_Count;
@@ -12,11 +15,9 @@ public class BM_Making_Bug : MonoBehaviour {
 
     public int [] Null_Bugker;
 
-
     public GameObject[] Bugker;
-    public int BugNum;
 
-
+    int BugNum;
     // 노드들을 탐색해서 버거를 만들수 있는가??
     // 버거를 탐색을 한 다음 해당 버거의 첫번째를 이미지를 띄운다.
     // 유저가 노드를 누르면 해당 노드의 번호를 받고 이미지를 교체한다.
@@ -37,7 +38,19 @@ public class BM_Making_Bug : MonoBehaviour {
        
     }
 
-    void Create_Bugker ()
+    public void Select_BugCreate ( int index)
+    {
+        switch(index)
+        {
+            case 0: GameObject.Find("Normal_Bugker").GetComponent<BM_BugCreate>().Create_Order(); break;
+            case 1: GameObject.Find("Bacon_Bugker").GetComponent<BM_BugCreate>().Create_Order(); break;
+            case 2: GameObject.Find("Steak_Bugker").GetComponent<BM_BugCreate>().Create_Order(); break;
+            case 3: GameObject.Find("Pinapple_Bugker").GetComponent<BM_BugCreate>().Create_Order(); break;
+            default: return;
+        }
+    }
+
+    int Select_Bugker ()
     {
 
         int temp;
@@ -59,10 +72,10 @@ public class BM_Making_Bug : MonoBehaviour {
         {
             temp = Random.Range(0, 3);
             if (CreateBug[temp] != 0)
-                break;
+                return temp;
         }
 
-
+        //return temp;
     }
 
     public int Order_Bugker (int [] Bugker)
@@ -127,6 +140,7 @@ public class BM_Making_Bug : MonoBehaviour {
     }
 
 
+
     // Use this for initialization
     void Start ()
     {
@@ -136,6 +150,12 @@ public class BM_Making_Bug : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-		
-	}
+       if ( GameObject.Find("Timer").GetComponent<BM_Timer>().check_BugTime() == 1)
+        {
+            BugNum = Select_Bugker();
+
+            Select_BugCreate(BugNum);
+        }
+
+    }
 }

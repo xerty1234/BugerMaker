@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-
+// 각 버거 노드의 생성, 삭제 담당하는 스크립트
 
 public class BM_Button_Mgr : MonoBehaviour {
 

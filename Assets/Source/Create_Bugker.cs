@@ -4,7 +4,8 @@ using UnityEngine;
 
 
 
-// 테스트 버전 컨트롤 2223232
+// Button mgr과 연개하여 버튼의 애니메이션 첫번째 설정을 담당하는 함수
+
 public class Create_Bugker : MonoBehaviour
 {
     // 버튼의 값의 총
