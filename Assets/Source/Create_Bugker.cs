@@ -213,7 +213,7 @@ public class Create_Bugker : MonoBehaviour
 
 
         AnimationNode temp;
-
+       
 
         // 0일때 리턴하는 함수
         if (Yindex == 0)
@@ -223,7 +223,7 @@ public class Create_Bugker : MonoBehaviour
         temp.y = Yindex;
         temp.index = Saarch_Bug(Xindex, Yindex - 1);
 
-
+ 
         ANode.Add(temp);
 
 
@@ -290,9 +290,9 @@ public class Create_Bugker : MonoBehaviour
             tempObject.GetComponent<RectTransform>().localPosition = Current_Pos;
             return 0;
         }
-    }
-    // 버거를 처음 생성하는 함수
-    int Create_BugNode()
+    } 
+        // 버거를 처음 생성하는 함수
+    int Create_BugNode ()
     {
         // 위치값 저정을 위한 Vector3 배열생성 
         aButton_Pos = new Vector3[MAX_Width, MAX_Height];
@@ -304,16 +304,16 @@ public class Create_Bugker : MonoBehaviour
         int Count = 0;
 
         float Last_Y_Pos = Start_Height;
-        LBug_Node = new List<GameObject>();
+        LBug_Node = new List< GameObject >();
         ANode = new List<AnimationNode>();
 
         // 노드 카운터를 초기화 시키는 함수
-        for (int i = 0; i < MAX_BUTTON; i++)
+        for (int i =0; i< MAX_BUTTON; i++ )
         {
             NodeCount[i] = 0;
         }
 
-
+        
         // 게임이 시작과 동시에 배열안에다가 각 위치의 값을 넣어준는 for문
         for (int i = 0; i < MAX_Width; i++)
         {
@@ -342,7 +342,7 @@ public class Create_Bugker : MonoBehaviour
         // 버거노드의 가로의 값만큼 생성
         for (int i = 0; i < MAX_Width; i++)
         {
-
+           
             // 위치값 저장을 위한 임시 변수
             Vector3 temp;
 
@@ -356,7 +356,7 @@ public class Create_Bugker : MonoBehaviour
             {
 
                 Create_Bug_Node(i, index, Count);
-
+                
                 Count++;
                 Count = Count % 13;
             }
@@ -366,16 +366,16 @@ public class Create_Bugker : MonoBehaviour
 
     }
 
+    
+        
 
-
-
-    void Start()
+	void Start ()
     {
         Create_BugNode();
     }
-
-    // Update is called once per frame
-    void Update()
+	
+	// Update is called once per frame
+	void Update ()
     {
         Check_Animation();
     }
