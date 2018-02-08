@@ -8,6 +8,8 @@ using UnityEngine;
 
 public class Create_Bugker : MonoBehaviour
 {
+
+    public Vector3 localOrder;
     // 버튼의 값의 총
     const int MAX_BUTTON = 13;
 
@@ -36,6 +38,8 @@ public class Create_Bugker : MonoBehaviour
     // 버거의 오브젝트를 저장하고 있는 오브젝트 행렬
     public GameObject[] BM_original_Node;
 
+    //버거오더의 오브젝트를 저장하고 있는 오브젝트 실행
+    public GameObject[] BM_Order;
 
     int[] NodeCount;
 
@@ -366,7 +370,14 @@ public class Create_Bugker : MonoBehaviour
 
     }
 
-    
+    public void Create_Order ()
+    {
+        GameObject tempObject;
+        tempObject = Instantiate(BM_Order[1], Vector3.zero, Quaternion.identity);
+        tempObject.transform.SetParent(transform);
+        tempObject.GetComponent<RectTransform>().localPosition = localOrder;
+
+    }
         
 
 	void Start ()

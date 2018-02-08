@@ -148,13 +148,19 @@ public class BM_Making_Bug : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
+    /*
+     * 시간의 의해서 버거 생성 완료
+     * 크기 줄이는 것과, 한번만 실행되는것, 
+     * 2018.02.08
+     * 이태섭
+     */
 	void Update ()
-    {
-       //if ( GameObject.Find("Timer").GetComponent<BM_Timer>().check_BugTime() == 1)
-        //{
-            //BugNum = Select_Bugker();
-            //Select_BugCreate(BugNum);
-        //}
+    {  
+       if (GameObject.Find("BM_Timer").GetComponent<BM_Timer>().check_BugTime() == 1)
+        {
+            Debug.Log("버거 생성");
+            GameObject.Find("BackGround").GetComponent<Create_Bugker>().Create_Order();
+        }
 
     }
 }
