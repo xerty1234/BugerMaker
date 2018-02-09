@@ -370,17 +370,28 @@ public class Create_Bugker : MonoBehaviour
 
     }
 
+    /*
+     * 만들어야 하는 버거의 오더를 생성하는 함수
+     * 2018.02.08
+     * LTS 
+     */
     public void Create_Order ()
     {
         GameObject tempObject;
+     
         tempObject = Instantiate(BM_Order[1], Vector3.zero, Quaternion.identity);
         tempObject.transform.SetParent(transform);
         tempObject.GetComponent<RectTransform>().localPosition = localOrder;
 
-    }
-        
+        tempObject.GetComponent<RectTransform>().localPosition = new Vector3(-10f, 100f, 0f);
+        tempObject.transform.localScale = new Vector3(-1f,-1f, 0f);
+        tempObject.transform.rotation = new Quaternion(180f, 0f, 0f,0f);
 
-	void Start ()
+        Debug.Log(tempObject.GetComponent<RectTransform>().localPosition);
+    }
+
+
+    void Start ()
     {
         Create_BugNode();
     }

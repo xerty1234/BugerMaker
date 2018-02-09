@@ -16,6 +16,8 @@ public class BM_Making_Bug : MonoBehaviour {
     public int [] Null_Bugker;
 
     public GameObject[] Bugker;
+    static int StopBugOrder;
+
 
     int BugNum;
     // 노드들을 탐색해서 버거를 만들수 있는가??
@@ -156,10 +158,12 @@ public class BM_Making_Bug : MonoBehaviour {
      */
 	void Update ()
     {  
-       if (GameObject.Find("BM_Timer").GetComponent<BM_Timer>().check_BugTime() == 1)
+       if (GameObject.Find("BM_Timer").GetComponent<BM_Timer>().check_BugTime() == 1
+            && StopBugOrder == 0)
         {
             Debug.Log("버거 생성");
             GameObject.Find("BackGround").GetComponent<Create_Bugker>().Create_Order();
+            StopBugOrder = 1;
         }
 
     }

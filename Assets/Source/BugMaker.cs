@@ -16,6 +16,7 @@ public class BugMaker : MonoBehaviour
     public int[] Bacon_Bugker;
 
     public int[] Null_Bugker;
+    static int StopBugOrder;
 
     public GameObject[] Bugker;
 
@@ -152,11 +153,10 @@ public class BugMaker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameObject.Find("Timer").GetComponent<BM_Timer>().check_BugTime() == 1)
+        if (GameObject.Find("BM_Timer").GetComponent<BM_Timer>().check_BugTime() == 1 && StopBugOrder == 0)
         {
-            BugNum = Select_Bugker();
-
-            Select_BugCreate(BugNum);
+            GameObject.Find("BackGround").GetComponent<Create_Bugker>().Create_Order();
+            StopBugOrder = 1;
         }
 
     }
