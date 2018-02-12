@@ -17,7 +17,7 @@ public class BM_Making_Bug : MonoBehaviour {
 
     public GameObject[] Bugker;
     static int StopBugOrder;
-    int Stop_Time;
+
 
     int BugNum;
     // 노드들을 탐색해서 버거를 만들수 있는가??
@@ -97,7 +97,6 @@ public class BM_Making_Bug : MonoBehaviour {
         // 버거 노드의 리스트화 (스택 처럼 사용)
         Search_BugNode = new List<int>();
 
-
         // 버거 노드를 전부 순회하기 위한 사이즈 
         NodeSize = GameObject.Find("BackGround").GetComponent<Create_Bugker>().LBug_Node.Count;
 
@@ -147,48 +146,25 @@ public class BM_Making_Bug : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
-        Stop_Time = 0;
-
-    }
-
-    // Update is called once per frame
+		
+	}
+	
+	// Update is called once per frame
     /*
      * 시간의 의해서 버거 생성 완료
      * 크기 줄이는 것과, 한번만 실행되는것, 
-     * 2018.02.08, 2018 02.12 추가(삭제루틴)
-     * 삭제루틴 오류 201.02.12 (아직 고쳐지지 않았음)
+     * 2018.02.08
      * 이태섭
      */
-
-
-    void Update()
-    {
-
-        //2018.02.12 추가
-        if (GameObject.Find("BM_Timer").GetComponent<BM_Timer>().check_BugTime() == 1
-             && StopBugOrder == 0)
+	void Update ()
+    {  
+       if (GameObject.Find("BM_Timer").GetComponent<BM_Timer>().check_BugTime() == 1
+            && StopBugOrder == 0)
         {
-            int temp, index;
-            temp = GameObject.Find("BackGround").GetComponent<Create_Bugker>().getBM_OrederMAXindex();
-           
-            index = Random.Range(0, temp);
-            Debug.Log("index = "+index);
-            GameObject.Find("BackGround").GetComponent<Create_Bugker>().Create_Order(index);
+            Debug.Log("버거 생성");
+            GameObject.Find("BackGround").GetComponent<Create_Bugker>().Create_Order();
             StopBugOrder = 1;
         }
-        
-      
-
-        if (GameObject.Find("BM_Timer").GetComponent<BM_Timer>().check_BugTime() == 1 &&
-          StopBugOrder == 2)
-        {
-            // 삭제루틴
-            Debug.Log("버거 삭제 루틴");
-            GameObject.Find("BackGround").GetComponent<Create_Bugker>().Delect_Order();
-            StopBugOrder = 0;
-
-        }
-
 
     }
 }
