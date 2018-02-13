@@ -5,7 +5,6 @@ using UnityEngine;
 
 
 // Button mgr과 연개하여 버튼의 애니메이션 첫번째 설정을 담당하는 함수
-// BackGround 오브젝트에 연결되어있다.
 
 public class Create_Bugker : MonoBehaviour
 {
@@ -44,8 +43,6 @@ public class Create_Bugker : MonoBehaviour
 
     int[] NodeCount;
 
-    public List<GameObject> Order_List;
-
     // 버거의 위치이동할때 에니메이션을 위하여 만든 구조체
     // 위치값과 해당 노드의 인덱스
     struct AnimationNode
@@ -58,12 +55,6 @@ public class Create_Bugker : MonoBehaviour
     // 에니메이션에 해당되는 노드들이 들어가있는 리스트 
     List<AnimationNode> ANode;
 
-    // 주문 배열의 크기를 알아오는 함수 2018.02.12 LTS
-    public int getBM_OrederMAXindex()  {
-        int temp;
-        temp = BM_Order.Length;
-        return temp;
-    }
 
     // 모든 노드에 값이 있으면 랜덤으로 하나를 생성하고
     // 노드에 값이 없으면 그 값을 생성 하는 함수
@@ -310,7 +301,7 @@ public class Create_Bugker : MonoBehaviour
         // 위치값 저정을 위한 Vector3 배열생성 
         aButton_Pos = new Vector3[MAX_Width, MAX_Height];
         NodeCount = new int[MAX_BUTTON];
-     
+
         //참조를 위한 인덱스 값 선언 (위치값 y)
         int index = 0;
         // 버거 노드의 생성을 위한 인덱스 값  (1씩 증가하면서 13까지 증가) 
@@ -319,7 +310,6 @@ public class Create_Bugker : MonoBehaviour
         float Last_Y_Pos = Start_Height;
         LBug_Node = new List< GameObject >();
         ANode = new List<AnimationNode>();
-        Order_List = new List<GameObject> ();
 
         // 노드 카운터를 초기화 시키는 함수
         for (int i =0; i< MAX_BUTTON; i++ )
@@ -385,11 +375,11 @@ public class Create_Bugker : MonoBehaviour
      * 2018.02.08
      * LTS 
      */
-    public void Create_Order (int index)
+    public void Create_Order ()
     {
         GameObject tempObject;
      
-        tempObject = Instantiate(BM_Order[index], Vector3.zero, Quaternion.identity);
+        tempObject = Instantiate(BM_Order[1], Vector3.zero, Quaternion.identity);
         tempObject.transform.SetParent(transform);
         tempObject.GetComponent<RectTransform>().localPosition = localOrder;
 
@@ -398,27 +388,7 @@ public class Create_Bugker : MonoBehaviour
         tempObject.transform.rotation = new Quaternion(180f, 0f, 0f,0f);
 
         Debug.Log(tempObject.GetComponent<RectTransform>().localPosition);
-        Order_List.Add(tempObject);
     }
-
-    /*
-     * 시간이 지나면 오더 버거 삭제 루틴 (모두 삭제 루틴)
-     * 2018.02.12
-     * LTS
-     */
-    public void Delect_Order ()
-    {
-        GameObject tempObject;
-
-        for(int i=0; i<Order_List.Count; i++)
-        {
-            tempObject = Order_List[i];
-            Destroy(tempObject);
-            Order_List.RemoveAt(i);
-        }
-     
-    }
-
 
 
     void Start ()

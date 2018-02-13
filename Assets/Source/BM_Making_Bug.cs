@@ -17,9 +17,7 @@ public class BM_Making_Bug : MonoBehaviour {
 
     public GameObject[] Bugker;
     static int StopBugOrder;
-    int Stop_Time;
-
-    int BugNum;
+    
     // 노드들을 탐색해서 버거를 만들수 있는가??
     // 버거를 탐색을 한 다음 해당 버거의 첫번째를 이미지를 띄운다.
     // 유저가 노드를 누르면 해당 노드의 번호를 받고 이미지를 교체한다.
@@ -147,7 +145,7 @@ public class BM_Making_Bug : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
-        Stop_Time = 0;
+      
 
     }
 
