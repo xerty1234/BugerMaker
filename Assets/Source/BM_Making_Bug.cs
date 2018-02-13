@@ -174,11 +174,15 @@ public class BM_Making_Bug : MonoBehaviour {
             GameObject.Find("BackGround").GetComponent<Create_Bugker>().Create_Order(index);
             StopBugOrder = 1;
         }
-        
-      
 
-        if (GameObject.Find("BM_Timer").GetComponent<BM_Timer>().check_BugTime() == 1 &&
-          StopBugOrder == 2)
+
+          /*
+         * 버거 삭제 루틴이 잘 되는지 테스트 
+         */
+
+        /*
+        if (StopBugOrder == 1 
+          && GameObject.Find("BM_Timer").GetComponent<BM_Timer>().getDelectBug() == true)
         {
             // 삭제루틴
             Debug.Log("버거 삭제 루틴");
@@ -186,7 +190,7 @@ public class BM_Making_Bug : MonoBehaviour {
             StopBugOrder = 0;
 
         }
-
+        */
 
     }
 }
