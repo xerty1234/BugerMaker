@@ -32,9 +32,9 @@ public class BM_Timer : MonoBehaviour {
     // 시간을 체크하여 일정시간이 되었을때 1을 리턴하여 버거의 생성을 알려주는 함수
     public int check_BugTime ()
     {
-
-        OrderTimer = (OrderTimer % CreateTimer + 1);
-        if (CreateTimer < OrderTimer)
+        int temp;
+        temp = (int)(OrderTimer % CreateTimer)+1;
+        if (CreateTimer <= temp)
         {
             OrderTimer = 0.0f;
             return 1;

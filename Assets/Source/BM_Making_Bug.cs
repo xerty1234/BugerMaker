@@ -163,18 +163,28 @@ public class BM_Making_Bug : MonoBehaviour {
     {
 
         //2018.02.12 추가
-        if (GameObject.Find("BM_Timer").GetComponent<BM_Timer>().check_BugTime() == 1
-             && StopBugOrder == 0)
+        if (GameObject.Find("BM_Timer").GetComponent<BM_Timer>().check_BugTime() == 1)
         {
             int temp, index;
-            temp = GameObject.Find("BackGround").GetComponent<Create_Bugker>().getBM_OrederMAXindex();
-           
-            index = Random.Range(0, temp);
-            Debug.Log("index = "+index);
-            GameObject.Find("BackGround").GetComponent<Create_Bugker>().Create_Order(index);
-            StopBugOrder = 1;
-        }
 
+            if (StopBugOrder == 0)
+            {
+                temp = GameObject.Find("BackGround").GetComponent<Create_Bugker>().getBM_OrederMAXindex();
+                index = Random.Range(0, temp);
+                Debug.Log("index = " + index);
+                GameObject.Find("BackGround").GetComponent<Create_Bugker>().Create_Order(index);
+                if (StopBugOrder != 1)StopBugOrder = 1;
+            }
+            else
+            {
+                Debug.Log("버거 삭제 루틴");
+                GameObject.Find("BackGround").GetComponent<Create_Bugker>().Delect_Order();
+                if (StopBugOrder !=0) StopBugOrder = 0;
+            }
+
+
+
+        }
 
           /*
          * 버거 삭제 루틴이 잘 되는지 테스트 

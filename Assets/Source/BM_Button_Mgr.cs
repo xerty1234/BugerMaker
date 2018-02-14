@@ -57,6 +57,8 @@ public class BM_Button_Mgr : MonoBehaviour {
             GameObject.Find("BackGround").GetComponent<Create_Bugker>().LBug_Node.RemoveAt(temp);
             // 어떤 노드가 삭제되어서 그 값을 삭제해주는 함수
             GameObject.Find("BackGround").GetComponent<Create_Bugker>().Count_Delete_BugNode(NodeNum);
+
+
         }
            
     }

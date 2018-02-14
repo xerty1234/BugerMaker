@@ -10,6 +10,7 @@ using UnityEngine;
 public class Create_Bugker : MonoBehaviour
 {
 
+  
     public Vector3 localOrder;
     // 버튼의 값의 총
     const int MAX_BUTTON = 13;
