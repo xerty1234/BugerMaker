@@ -9,6 +9,7 @@ public class BM_Timer : MonoBehaviour {
 
     public float Timer;
     public float CreateTimer;
+    public float PlayTimer;
     Text textTimer;
     float OrderTimer;
 
@@ -30,11 +31,18 @@ public class BM_Timer : MonoBehaviour {
      * order timer은 버거의 생성 10을 왔다갔다 하면서 10이되면 1을 리턴한다.
      * */
     // 시간을 체크하여 일정시간이 되었을때 1을 리턴하여 버거의 생성을 알려주는 함수
-    public int check_BugTime ()
+    public int check_BugTime (int mode)
     {
         int temp;
-        temp = (int)(OrderTimer % CreateTimer)+1;
-        if (CreateTimer <= temp)
+        float tempTimer;
+
+        if (mode == 1) tempTimer = CreateTimer;
+        else
+            tempTimer = PlayTimer;
+
+
+        temp = (int)(OrderTimer % tempTimer) + 1;
+        if (tempTimer <= temp)
         {
             OrderTimer = 0.0f;
             return 1;
@@ -43,10 +51,8 @@ public class BM_Timer : MonoBehaviour {
             return 0;
     }
 
-    
-
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 
      
    

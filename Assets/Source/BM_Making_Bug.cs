@@ -13,7 +13,6 @@ public class BM_Making_Bug : MonoBehaviour {
     public int [] Pineapple_Bugker;
     public int [] Bacon_Bugker;
 
-    public int [] Null_Bugker;
 
     public GameObject[] Bugker;
     static int StopBugOrder;
@@ -33,7 +32,7 @@ public class BM_Making_Bug : MonoBehaviour {
             case 1: return Pineapple_Bugker;    
             case 2: return Bacon_Bugker;    
             case 3: return Steak_Bugker;    
-            default:  return Null_Bugker; 
+            default:  return null; 
         }
        
     }
@@ -145,7 +144,8 @@ public class BM_Making_Bug : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
-      
+     
+
 
     }
 
@@ -157,11 +157,60 @@ public class BM_Making_Bug : MonoBehaviour {
      * 삭제루틴 오류 201.02.12 (아직 고쳐지지 않았음)
      * 이태섭
      */
+     /*
+      * 이 코드의 문제점은 오더 타이밍을 알 수 있으나, 오더가 된 이후의 타이밍을 알 수가 없다
+      * 
+      * */
+
+
+    void CreateOrderBug ()
+    {
+        int temp, index;
+        int[] tempArray;
+        temp = GameObject.Find("BackGround").GetComponent<Create_Bugker>().getBM_OrederMAXindex();
+        index = Random.Range(0, temp);
+        Debug.Log("index = " + index);
+        GameObject.Find("BackGround").GetComponent<Create_Bugker>().Create_Order(index);
+        tempArray = GetSelect_Bugker(index);
+        for (int i = 0; i < tempArray.Length; ++i)
+            Debug.Log(tempArray[i]);
+
+        if (StopBugOrder != 1) StopBugOrder = 1;
+       
+
+
+           
+
+
+    }
+
+    void DelectOrderBug()
+    {
+        Debug.Log("버거 삭제 루틴");
+        GameObject.Find("BackGround").GetComponent<Create_Bugker>().Delect_Order();
+        if (StopBugOrder != 0) StopBugOrder = 0;
+    }
+
 
 
     void Update()
     {
 
+        if (GameObject.Find("BM_Timer").GetComponent<BM_Timer>().check_BugTime(StopBugOrder) == 1)
+        {
+            if (StopBugOrder == 0)
+            {
+                CreateOrderBug();
+            }
+            else if (StopBugOrder == 1)
+            {
+                DelectOrderBug();
+            }
+        }
+
+
+
+        /*
         //2018.02.12 추가
         if (GameObject.Find("BM_Timer").GetComponent<BM_Timer>().check_BugTime() == 1)
         {
@@ -181,10 +230,8 @@ public class BM_Making_Bug : MonoBehaviour {
                 GameObject.Find("BackGround").GetComponent<Create_Bugker>().Delect_Order();
                 if (StopBugOrder !=0) StopBugOrder = 0;
             }
-
-
-
         }
+        */
 
           /*
          * 버거 삭제 루틴이 잘 되는지 테스트 
