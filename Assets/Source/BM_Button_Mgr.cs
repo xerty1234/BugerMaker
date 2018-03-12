@@ -22,7 +22,7 @@ public class BM_Button_Mgr : MonoBehaviour {
         // 여기서 버거의 노드를 정리하는 문장을 만드러야 한다.
         Debug.Log(Result);
 
-        // 클릭된 버거를 삭제하는 함수 (클릭된 위치정보)
+        // 클릭된 버거를 삭제하는 함수 (클릭된 위치정보)   
         Remove_BugNode(Result);
         Change_of_location(Result);
 
@@ -32,6 +32,7 @@ public class BM_Button_Mgr : MonoBehaviour {
          *
          */
 
+        GameObject.Find("BackGround").GetComponent<BM_Making_Bug>().check_select_bug(NodeNum);
     }
 
     // 클릭된 버거를 삭제하는 함수 
