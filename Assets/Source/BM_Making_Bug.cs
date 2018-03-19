@@ -13,21 +13,37 @@ public class BM_Making_Bug : MonoBehaviour {
     public int[] Pineapple_Bugker;
     public int[] Bacon_Bugker;
 
+    //const int MAX_BUGKER_TYPE = 4 ;
+    //const int MAX_BUGKER_COUNT = 6;
+
     // 버거노드를 체크하는 배열 
     static int[] checkBugArray;
     static int checkIndex;
 
-    public GameObject[] Bugker;
+   
+    // 버거 오브젝트의 배열 (버거 오브젝트를 바꾸는 로직 제작0
+    // 2018.03.19
+    public GameObject[] Normal_Bugker_obj;
+    public GameObject[] Steak_Bugker_obj;
+    public GameObject[] Pineapple_Bugker_obj;
+    public GameObject[] Bacon_Bugker_obj;
+
+
+
+
     static int StopBugOrder;
 
-    public void moveCheckindex()  {checkIndex++;}
-    public void resetCheckindex() { checkIndex = 0;}
+    public void moveCheckindex()   {checkIndex++;}
+    public void resetCheckindex()  { checkIndex = 0;}
+    public int getCheckindex()     { return checkIndex; }
 
     // 노드들을 탐색해서 버거를 만들수 있는가??
     // 버거를 탐색을 한 다음 해당 버거의 첫번째를 이미지를 띄운다.
     // 유저가 노드를 누르면 해당 노드의 번호를 받고 이미지를 교체한다.
     // 유저가 버거 노드를 잘못 입력하면 해당 버거 스택은 가만이 있고 노드만 사라진다.
     // 버거를 완성하면 버거를 사라지게 만들고 점수가 올라가고 처음 루틴으로 돌아간다.
+
+
 
 
     // 버거를 찾아서 버거 노드와 맞으면 인덱스 노드를 1증가 시키고 true를 반환한다.
@@ -201,8 +217,8 @@ public class BM_Making_Bug : MonoBehaviour {
         // 버거노드를 출력할때 마다 어떤 버거인지를 출력하는 출력문장을 만들고, 2018 03 12 구현사항
 
         //checkBugArray = tempArray;
-        for (int i = 0; i < checkBugArray.Length; ++i)
-             Debug.Log(checkBugArray[i]);
+       // for (int i = 0; i < checkBugArray.Length; ++i)
+           //  Debug.Log(checkBugArray[i]);
 
 
         
