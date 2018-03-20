@@ -29,7 +29,6 @@ public class BM_Button_Mgr : MonoBehaviour {
         // 여기에 버거가 맞는 노드인가를 체크하는 문장이 필요!
         /* 버거 체크 배열이 있는가??  2018.02.12
          *
-         *
          */
 
         GameObject.Find("BackGround").GetComponent<BM_Making_Bug>().check_select_bug(NodeNum);

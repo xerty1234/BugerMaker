@@ -234,6 +234,12 @@ public class BM_Making_Bug : MonoBehaviour {
         if (StopBugOrder != 0) StopBugOrder = 0;
     }
 
+    void Reduce()
+    {
+        GameObject.Find("Screen").GetComponent<BM_GameManger>().setReduce(1);
+        GameObject.Find("Screen").GetComponent<BM_GameManger>().printGameStateValue();
+
+    }
 
 
     void Update()
@@ -247,7 +253,7 @@ public class BM_Making_Bug : MonoBehaviour {
             }
             else if (StopBugOrder == 1)
             {
-                DelectOrderBug();
+                Reduce();
             }
         }
 
