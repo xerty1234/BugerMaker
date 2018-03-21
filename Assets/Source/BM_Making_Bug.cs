@@ -255,12 +255,7 @@ public class BM_Making_Bug : MonoBehaviour {
     {
         if (GameObject.Find("BM_Timer").GetComponent<BM_Timer>().check_BugTime())
             CreateOrderBug();
-    
-
-      
-
-
-
+   
         /*
         //2018.02.12 추가
         if (GameObject.Find("BM_Timer").GetComponent<BM_Timer>().check_BugTime() == 1)
