@@ -203,8 +203,8 @@ public class BM_Making_Bug : MonoBehaviour {
       * 
       * */
 
-
-    void CreateOrderBug ()
+       // 버거를 생성하는 함수
+    void Increase()
     {
         int temp, index;
         temp = GameObject.Find("BackGround").GetComponent<Create_Bugker>().getBM_OrederMAXindex();
@@ -213,17 +213,23 @@ public class BM_Making_Bug : MonoBehaviour {
         GameObject.Find("BackGround").GetComponent<Create_Bugker>().Create_Order(index);
         checkBugArray = GetSelect_Bugker(index);
         resetCheckindex();
-        // temp Array에 버거노드의 배열이 들어온다.
-        // 버거노드를 출력할때 마다 어떤 버거인지를 출력하는 출력문장을 만들고, 2018 03 12 구현사항
-
-        //checkBugArray = tempArray;
-       // for (int i = 0; i < checkBugArray.Length; ++i)
-           //  Debug.Log(checkBugArray[i]);
+    }
 
 
-        
-        if (StopBugOrder != 1) StopBugOrder = 1;
-       
+    // 버거가 이미 생성 되어있다면 Reduce 생성이 되지 않았다면 Increase를 생성해
+    // 주문을 받는다.
+    void CreateOrderBug ()
+    {
+        if (StopBugOrder != 1)
+        {
+            StopBugOrder = 1;
+            Increase();
+        }
+
+       else
+        {
+            Reduce();
+        }
 
     }
 
@@ -234,6 +240,8 @@ public class BM_Making_Bug : MonoBehaviour {
         if (StopBugOrder != 0) StopBugOrder = 0;
     }
 
+
+
     void Reduce()
     {
         GameObject.Find("Screen").GetComponent<BM_GameManger>().setReduce(1);
@@ -242,20 +250,14 @@ public class BM_Making_Bug : MonoBehaviour {
     }
 
 
+
     void Update()
     {
+        if (GameObject.Find("BM_Timer").GetComponent<BM_Timer>().check_BugTime())
+            CreateOrderBug();
+    
 
-        if (GameObject.Find("BM_Timer").GetComponent<BM_Timer>().check_BugTime(StopBugOrder) == 1)
-        {
-            if (StopBugOrder == 0)
-            {
-                CreateOrderBug();
-            }
-            else if (StopBugOrder == 1)
-            {
-                Reduce();
-            }
-        }
+      
 
 
 

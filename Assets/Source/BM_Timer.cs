@@ -9,21 +9,31 @@ public class BM_Timer : MonoBehaviour {
 
     public float Timer;
     public float CreateTimer;
-    public float PlayTimer;
+    float currentTimer;
+    float PlayTimer = 0;
+    float bugkerTime;
     Text textTimer;
-    float OrderTimer;
 
 
     // 시간을 체크하는 함수
     public float GetTimer ()
     {
-        Timer += Time.deltaTime;
-        OrderTimer += Time.deltaTime;
+        bugkerTime += Time.deltaTime;
+        if (bugkerTime > Timer)
+        {
+            PlayTimer++;
+            currentTimer++;
+            bugkerTime = 0;
+           
+        }
         textTimer = GetComponent<Text>();
-        textTimer.text = string.Format("{0:N0}", Timer);
+        textTimer.text = string.Format("{0:N0}", currentTimer);
 
-        return Timer;
+        return PlayTimer;
     }
+    
+    public void resetTime () { PlayTimer = 0f; }
+    
     // 체크되는 시간을 저장 했다가 
     /* 2018.02.13
      * 시간 함수의 문제점 발견
@@ -36,6 +46,8 @@ public class BM_Timer : MonoBehaviour {
      * 
      * */
     // 시간을 체크하여 일정시간이 되었을때 1을 리턴하여 버거의 생성을 알려주는 함수
+    // 변경
+    /*
     public int check_BugTime (int mode)
     {
         int temp;
@@ -55,6 +67,24 @@ public class BM_Timer : MonoBehaviour {
         else
             return 0;
     }
+    */
+
+
+
+    public bool check_BugTime()
+    {
+        float currentTimer = GetTimer();
+        if (CreateTimer <= currentTimer)
+        {
+            Debug.Log("버거크리에이트");
+            resetTime();
+            return true;
+        }
+        else
+            return false;
+
+    }
+
 
     // Use this for initialization
     void Start () {
