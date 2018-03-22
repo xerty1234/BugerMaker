@@ -16,6 +16,9 @@ public class BM_Timer : MonoBehaviour {
 
 
     // 시간을 체크하는 함수
+    // 리턴 값인 PlayTimer은 버거 check_BugTime()이 실행되면 초기화 된다.
+    //currentTimer 게임의 진행 시간을 나타낸다.
+    // Timer로 속도 조절을 한다.
     public float GetTimer ()
     {
         bugkerTime += Time.deltaTime;
@@ -33,7 +36,7 @@ public class BM_Timer : MonoBehaviour {
     }
     
     public void resetTime () { PlayTimer = 0f; }
-    
+
     // 체크되는 시간을 저장 했다가 
     /* 2018.02.13
      * 시간 함수의 문제점 발견
@@ -43,6 +46,7 @@ public class BM_Timer : MonoBehaviour {
      * 버거를 나왔다 안나왔다 만들지만 로직이 바뀌어야 함  버거 생성 -> 버거가 사라지지 않음
      *  -> 버거를 맞추면 버거 체인지 -> 다 맞추면 버거 제거 -> 새로운 버거 생성 ( 일정시간이
      *  되어도 버거가 완성되지 않으면 변수 PlayTime 변수를 만들어서 이 값을 제거 (초기값100 0이되면 게임종료)
+     *  2018.03.20 구현완료
      * 
      * */
     // 시간을 체크하여 일정시간이 되었을때 1을 리턴하여 버거의 생성을 알려주는 함수
@@ -70,7 +74,11 @@ public class BM_Timer : MonoBehaviour {
     */
 
 
-
+    /*
+     * 2018.03.20 이태섭
+     * CreateTimer 버거가 생성되는 타이밍
+     * 
+     * */
     public bool check_BugTime()
     {
         float currentTimer = GetTimer();

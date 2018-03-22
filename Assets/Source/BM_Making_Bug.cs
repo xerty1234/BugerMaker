@@ -44,6 +44,7 @@ public class BM_Making_Bug : MonoBehaviour {
     // 버거를 완성하면 버거를 사라지게 만들고 점수가 올라가고 처음 루틴으로 돌아간다.
 
 
+  
 
 
     // 버거를 찾아서 버거 노드와 맞으면 인덱스 노드를 1증가 시키고 true를 반환한다.
@@ -52,6 +53,7 @@ public class BM_Making_Bug : MonoBehaviour {
         if (checkBugArray[checkIndex] == tagNum)
         {
             moveCheckindex();
+            GameObject.Find("BackGround").GetComponent<Create_Bugker>().Change_bugOrder(checkIndex);
             Debug.Log("맞았다");
             return true;
         }
@@ -78,15 +80,15 @@ public class BM_Making_Bug : MonoBehaviour {
        
     }
 
-    public void Select_BugCreate ( int index)
+    public GameObject[] getSelect_BugCreate ( int index)
     {
         switch(index)
         {
-            case 0: GameObject.Find("Normal_Bugker").GetComponent<BM_BugCreate>().Create_Order(); break;
-            case 1: GameObject.Find("Bacon_Bugker").GetComponent<BM_BugCreate>().Create_Order(); break;
-            case 2: GameObject.Find("Steak_Bugker").GetComponent<BM_BugCreate>().Create_Order(); break;
-            case 3: GameObject.Find("Pinapple_Bugker").GetComponent<BM_BugCreate>().Create_Order(); break;
-            default: return;
+            case 0:  return Normal_Bugker_obj;
+            case 1:  return Bacon_Bugker_obj;
+            case 2:  return Pineapple_Bugker_obj;
+            case 3:  return Steak_Bugker_obj;
+            default: return null;
         }
     }
 

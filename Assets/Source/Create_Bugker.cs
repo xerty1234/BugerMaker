@@ -45,7 +45,16 @@ public class Create_Bugker : MonoBehaviour
 
     int[] NodeCount;
 
+    private int select_orderNum;
+
+
+
     public List<GameObject> Order_List;
+
+
+    public void setselect_orderNum (int index) { this.select_orderNum = index; }
+    public int getselect_orderNum() { return this.select_orderNum; }
+    public void reset_orderNum() { this.select_orderNum = 0; }
 
     // 버거의 위치이동할때 에니메이션을 위하여 만든 구조체
     // 위치값과 해당 노드의 인덱스
@@ -390,7 +399,9 @@ public class Create_Bugker : MonoBehaviour
     public void Create_Order (int index)
     {
         GameObject tempObject;
-     
+
+        setselect_orderNum(index);
+
         tempObject = Instantiate(BM_Order[index], Vector3.zero, Quaternion.identity);
         tempObject.transform.SetParent(transform);
         tempObject.GetComponent<RectTransform>().localPosition = localOrder;
@@ -421,6 +432,26 @@ public class Create_Bugker : MonoBehaviour
      
     }
 
+
+    public void Change_bugOrder(int checkIndex)
+    {
+        GameObject tempObject;
+        GameObject nextObject;
+        GameObject[]  NextObjects;
+
+        NextObjects = GameObject.Find("Screen").GetComponent<BM_Making_Bug>().getSelect_BugCreate(getselect_orderNum());
+        nextObject = NextObjects[checkIndex];
+
+        for (int i = 0; i < Order_List.Count; i++)
+        {
+            tempObject = Order_List[i];
+            nextObject.transform.localPosition = tempObject.transform.localPosition;
+            Destroy(tempObject);
+            Order_List.RemoveAt(i);
+        }
+        if(nextObject != null)
+             Order_List.Add(nextObject);
+    }
 
 
     void Start ()
