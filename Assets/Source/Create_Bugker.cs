@@ -445,7 +445,18 @@ public class Create_Bugker : MonoBehaviour
         for (int i = 0; i < Order_List.Count; i++)
         {
             tempObject = Order_List[i];
+
+
+      
+
+            nextObject.transform.parent = tempObject.transform.parent;
             nextObject.transform.localPosition = tempObject.transform.localPosition;
+
+
+            //nextObject.transform.SetParent(tempObject.transform);
+           // nextObject.transform.localPosition = tempObject.transform.localPosition;
+
+
             Destroy(tempObject);
             Order_List.RemoveAt(i);
         }

@@ -213,6 +213,7 @@ public class BM_Making_Bug : MonoBehaviour {
         index = Random.Range(0, temp);
         Debug.Log("index = " + index);
         GameObject.Find("BackGround").GetComponent<Create_Bugker>().Create_Order(index);
+        // 
         checkBugArray = GetSelect_Bugker(index);
         resetCheckindex();
     }

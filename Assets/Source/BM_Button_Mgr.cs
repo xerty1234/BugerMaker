@@ -9,6 +9,11 @@ public class BM_Button_Mgr : MonoBehaviour {
 
     public int NodeNum;
 
+    //
+
+
+
+
     // 버튼이 선택 될시 해당 버튼 노드 삭제와 노드 위치 변경 및, 새로운 노드 생성을 담당하는 함수
     public  void Select_Button ()
     {
