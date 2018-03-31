@@ -10,6 +10,7 @@ using UnityEngine;
 public class Create_Bugker : MonoBehaviour
 {
 
+    bool isAnimation = false;
   
     public Vector3 localOrder;
     // 버튼의 값의 총
@@ -51,6 +52,10 @@ public class Create_Bugker : MonoBehaviour
 
     public List<GameObject> Order_List;
 
+
+    public void AnimationEnd () { if (isAnimation != false ) isAnimation = false; }
+    public void AnimationStart () { if (isAnimation != true) isAnimation = true; }
+    public bool getAniState () { return isAnimation; }
 
     public void setselect_orderNum (int index) { this.select_orderNum = index; }
     public int getselect_orderNum() { return this.select_orderNum; }
@@ -277,8 +282,11 @@ public class Create_Bugker : MonoBehaviour
     }
 
     // 해당 노드의 애니메이션 처리하는 함수 (Animationnode의 인자값을 받는다)
+    // 버거 애니메이션이 실행 될때 버거의 입력을 받지 말아야 한다.
     int Change_Animation(int x, int y, int index)
     {
+
+        AnimationStart();
         // 게임오브젝트의 값을 받아오는 함수
         GameObject tempObject;
         // 현재 위치값을 가지고 있는 변수
@@ -303,6 +311,7 @@ public class Create_Bugker : MonoBehaviour
         {
             Current_Pos = Last_Pos;
             tempObject.GetComponent<RectTransform>().localPosition = Current_Pos;
+            AnimationEnd();
             return 1;
         }
 
@@ -454,7 +463,6 @@ public class Create_Bugker : MonoBehaviour
             if (tempObject != null && nextObject != null)
             {
                 nextObject.transform.SetParent(tempObject.transform.parent);
-                //nextObject.transform.parent = tempObject.transform.parent;
                 nextObject.transform.localPosition = tempObject.transform.localPosition;
                 Destroy(tempObject);
                 Order_List.RemoveAt(i);

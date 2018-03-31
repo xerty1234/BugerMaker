@@ -16,11 +16,15 @@ public class BM_Button_Mgr : MonoBehaviour
     {
         Vector3 temp;
         Vector2 Result;
-  
+        bool isAnimation = false;
 
 
         temp = this.GetComponent<RectTransform>().localPosition;
         Result = GameObject.Find("BackGround").GetComponent<Create_Bugker>().Check_Button(temp);
+
+      //  isAnimation = GameObject.Find("BackGround").GetComponent<Create_Bugker>().getAniState();
+      //  if (isAnimation == false)
+      //      return;
 
         // 여기서 버거의 노드를 정리하는 문장을 만드러야 한다.
         Debug.Log(Result);
