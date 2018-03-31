@@ -36,6 +36,9 @@ public class BM_Making_Bug : MonoBehaviour {
     public void moveCheckindex()   {checkIndex++;}
     public void resetCheckindex()  { checkIndex = 0;}
     public int getCheckindex()     { return checkIndex; }
+    public void demoveCheckindex() { checkIndex--; }
+
+    //public int getcheckBugArray_Length() { return checkBugArray.Length; }
 
     // 노드들을 탐색해서 버거를 만들수 있는가??
     // 버거를 탐색을 한 다음 해당 버거의 첫번째를 이미지를 띄운다.
@@ -44,23 +47,37 @@ public class BM_Making_Bug : MonoBehaviour {
     // 버거를 완성하면 버거를 사라지게 만들고 점수가 올라가고 처음 루틴으로 돌아간다.
 
 
-  
+
 
 
     // 버거를 찾아서 버거 노드와 맞으면 인덱스 노드를 1증가 시키고 true를 반환한다.
-    public bool check_select_bug (int tagNum)
+    public void check_select_bug (int tagNum)
     {
+
+        // 버거를 다 맞춘다음 버거를 삭제하고 
+        if (checkBugArray == null)
+            return;
+
+
+        if (checkIndex >= checkBugArray.Length)
+        {
+            GameObject.Find("BackGround").GetComponent<Create_Bugker>().Delete_Order();
+            GameObject.Find("BM_Timer").GetComponent<BM_Timer>().resetTime();
+            resetCheckindex();
+            Increase();
+
+        }
         if (checkBugArray[checkIndex] == tagNum)
         {
             moveCheckindex();
             GameObject.Find("BackGround").GetComponent<Create_Bugker>().Change_bugOrder(checkIndex);
             Debug.Log("맞았다");
-            return true;
+            //return getCheckindex();
         }
         else
         {
             Debug.Log("틀렸다");
-            return false;
+            //return 0;
         }
     }
             
@@ -188,8 +205,6 @@ public class BM_Making_Bug : MonoBehaviour {
     void Start ()
     {
      
-
-
     }
 
     // Update is called once per frame
@@ -213,7 +228,7 @@ public class BM_Making_Bug : MonoBehaviour {
         index = Random.Range(0, temp);
         Debug.Log("index = " + index);
         GameObject.Find("BackGround").GetComponent<Create_Bugker>().Create_Order(index);
-        // 
+
         checkBugArray = GetSelect_Bugker(index);
         resetCheckindex();
     }
@@ -239,7 +254,7 @@ public class BM_Making_Bug : MonoBehaviour {
     void DelectOrderBug()
     {
         Debug.Log("버거 삭제 루틴");
-        GameObject.Find("BackGround").GetComponent<Create_Bugker>().Delect_Order();
+        GameObject.Find("BackGround").GetComponent<Create_Bugker>().Delete_Order();
         if (StopBugOrder != 0) StopBugOrder = 0;
     }
 

@@ -5,22 +5,20 @@ using UnityEngine;
 
 // 각 버거 노드의 생성, 삭제 담당하는 스크립트
 
-public class BM_Button_Mgr : MonoBehaviour {
+public class BM_Button_Mgr : MonoBehaviour
+{
 
     public int NodeNum;
 
-    //
-
-
-
 
     // 버튼이 선택 될시 해당 버튼 노드 삭제와 노드 위치 변경 및, 새로운 노드 생성을 담당하는 함수
-    public  void Select_Button ()
+    public void Select_Button()
     {
         Vector3 temp;
         Vector2 Result;
-        
-      
+  
+
+
         temp = this.GetComponent<RectTransform>().localPosition;
         Result = GameObject.Find("BackGround").GetComponent<Create_Bugker>().Check_Button(temp);
 
@@ -37,6 +35,10 @@ public class BM_Button_Mgr : MonoBehaviour {
          */
 
         GameObject.Find("BackGround").GetComponent<BM_Making_Bug>().check_select_bug(NodeNum);
+        
+
+      
+
     }
 
     // 클릭된 버거를 삭제하는 함수 
@@ -44,11 +46,11 @@ public class BM_Button_Mgr : MonoBehaviour {
     {
         int x, y = 0;
         int temp;
-  
-        x = (int) BPos.x;
-        y = (int) BPos.y;
 
-       temp =  GameObject.Find("BackGround").GetComponent<Create_Bugker>().Saarch_Bug(x,y);
+        x = (int)BPos.x;
+        y = (int)BPos.y;
+
+        temp = GameObject.Find("BackGround").GetComponent<Create_Bugker>().Saarch_Bug(x, y);
 
         // 오류가 나오게 되면 1000을 리턴함으로 오류 문장 삽입 예정
         if (temp == 1000)
@@ -65,10 +67,10 @@ public class BM_Button_Mgr : MonoBehaviour {
 
 
         }
-           
+
     }
 
-    
+
 
     // 버거의 위치를 바꾸어주는 함수
     void Change_of_location(Vector2 Pos)
@@ -95,24 +97,26 @@ public class BM_Button_Mgr : MonoBehaviour {
             GameObject.Find("BackGround").GetComponent<Create_Bugker>().Create_Bug_Node(x, 0, index);
 
             // 그리고 노드의 자리를 이동해준다.
-            for (int i=y; i>0; i--)
+            for (int i = y; i > 0; i--)
             {
                 GameObject.Find("BackGround").GetComponent<Create_Bugker>().Change_Bug(x, i);
 
             }
         }
-        
+
     }
 
 
 
     // Use this for initialization
-    void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    void Start()
+    {
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
 }

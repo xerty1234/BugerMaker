@@ -419,7 +419,7 @@ public class Create_Bugker : MonoBehaviour
      * 2018.02.12
      * LTS
      */
-    public void Delect_Order ()
+    public void Delete_Order ()
     {
         GameObject tempObject;
 
@@ -442,23 +442,26 @@ public class Create_Bugker : MonoBehaviour
         NextObjects = GameObject.Find("Screen").GetComponent<BM_Making_Bug>().getSelect_BugCreate(getselect_orderNum());
         nextObject = NextObjects[checkIndex];
 
+
+       
+
         for (int i = 0; i < Order_List.Count; i++)
         {
+            Debug.Log(Order_List.Count);
             tempObject = Order_List[i];
+            
 
+            if (tempObject != null && nextObject != null)
+            {
+                nextObject.transform.SetParent(tempObject.transform.parent);
+                //nextObject.transform.parent = tempObject.transform.parent;
+                nextObject.transform.localPosition = tempObject.transform.localPosition;
+                Destroy(tempObject);
+                Order_List.RemoveAt(i);
+            }
+     
 
-      
-
-            nextObject.transform.parent = tempObject.transform.parent;
-            nextObject.transform.localPosition = tempObject.transform.localPosition;
-
-
-            //nextObject.transform.SetParent(tempObject.transform);
-           // nextObject.transform.localPosition = tempObject.transform.localPosition;
-
-
-            Destroy(tempObject);
-            Order_List.RemoveAt(i);
+        
         }
         if(nextObject != null)
              Order_List.Add(nextObject);
