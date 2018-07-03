@@ -71,12 +71,12 @@ public class BM_Making_Bug : MonoBehaviour {
         {
             moveCheckindex();
             GameObject.Find("BackGround").GetComponent<Create_Bugker>().Change_bugOrder(checkIndex);
-            Debug.Log("맞았다");
+            //Debug.Log("맞았다");
             //return getCheckindex();
         }
         else
         {
-            Debug.Log("틀렸다");
+            //Debug.Log("틀렸다");
             //return 0;
         }
 
@@ -228,7 +228,7 @@ public class BM_Making_Bug : MonoBehaviour {
         int temp, index;
         temp = GameObject.Find("BackGround").GetComponent<Create_Bugker>().getBM_OrederMAXindex();
         index = Random.Range(0, temp);
-        Debug.Log("index = " + index);
+        //Debug.Log("index = " + index);
         GameObject.Find("BackGround").GetComponent<Create_Bugker>().Create_Order(index);
 
         checkBugArray = GetSelect_Bugker(index);
@@ -255,7 +255,7 @@ public class BM_Making_Bug : MonoBehaviour {
 
     void DelectOrderBug()
     {
-        Debug.Log("버거 삭제 루틴");
+        //Debug.Log("버거 삭제 루틴");
         GameObject.Find("BackGround").GetComponent<Create_Bugker>().Delete_Order();
         if (StopBugOrder != 0) StopBugOrder = 0;
     }
@@ -265,7 +265,8 @@ public class BM_Making_Bug : MonoBehaviour {
     void Reduce()
     {
         GameObject.Find("Screen").GetComponent<BM_GameManger>().setReduce(1);
-        GameObject.Find("Screen").GetComponent<BM_GameManger>().printGameStateValue();
+
+        //GameObject.Find("Screen").GetComponent<BM_GameManger>().printGameStateValue();
 
     }
 

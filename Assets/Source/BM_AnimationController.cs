@@ -20,9 +20,7 @@ public class BM_AnimationController : MonoBehaviour
 
     public void AnimationLookOFF()
     {
-        AnimationLook = false;
-        Debug.Log("실행이 되나?");
-        
+        AnimationLook = false;        
     }
 
     public bool getAnimationLook()  {return AnimationLook;}

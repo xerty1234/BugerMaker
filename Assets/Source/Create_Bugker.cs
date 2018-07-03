@@ -424,7 +424,7 @@ public class Create_Bugker : MonoBehaviour
         tempObject.transform.localScale = new Vector3(-1f,-1f, 0f);
         tempObject.transform.rotation = new Quaternion(180f, 0f, 0f,0f);
 
-        Debug.Log(tempObject.GetComponent<RectTransform>().localPosition);
+       // Debug.Log(tempObject.GetComponent<RectTransform>().localPosition);
         Order_List.Add(tempObject);
     }
 
@@ -461,7 +461,7 @@ public class Create_Bugker : MonoBehaviour
 
         for (int i = 0; i < Order_List.Count; i++)
         {
-            Debug.Log(Order_List.Count);
+           // Debug.Log(Order_List.Count);
             tempObject = Order_List[i];
             
 

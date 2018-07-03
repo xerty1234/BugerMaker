@@ -84,7 +84,7 @@ public class BM_Timer : MonoBehaviour {
         float currentTimer = GetTimer();
         if (CreateTimer <= currentTimer)
         {
-            Debug.Log("버거크리에이트");
+           // Debug.Log("버거크리에이트");
             resetTime();
             return true;
         }

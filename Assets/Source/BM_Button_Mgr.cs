@@ -39,7 +39,7 @@ public class BM_Button_Mgr : MonoBehaviour
         //      return;
 
         // 여기서 버거의 노드를 정리하는 문장을 만드러야 한다.
-        Debug.Log(Result);
+       // Debug.Log(Result);
 
         // 클릭된 버거를 삭제하는 함수 (클릭된 위치정보)   
         Remove_BugNode(Result);
@@ -62,18 +62,19 @@ public class BM_Button_Mgr : MonoBehaviour
     {
 
         bool isAnimationLook = GameObject.Find("BM_Material").GetComponent<BM_AnimationController>().getAnimationLook();
+       // Debug.Log(NodeNum);
 
-
-        Debug.Log(isAnimationLook);
+       // Debug.Log(isAnimationLook);
         if (isAnimationLook == false)
         {
             GameObject.Find("BM_Material").GetComponent<BM_AnimationController>().AnimationLookON();
             Select_ButtonStep(); 
         }
-        else
-        {
-            Debug.Log("애니메이션 중입니다.");
-        }
+
+        //else
+        //{
+        //    //Debug.Log("애니메이션 중입니다.");
+        //}
 
 
     }
