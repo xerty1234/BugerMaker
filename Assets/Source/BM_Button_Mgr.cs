@@ -10,21 +10,33 @@ public class BM_Button_Mgr : MonoBehaviour
 
     public int NodeNum;
 
+    /*
+     * 에니메이션 rock 테스트
+    bool isAnimation = false;
 
-    // 버튼이 선택 될시 해당 버튼 노드 삭제와 노드 위치 변경 및, 새로운 노드 생성을 담당하는 함수
-    public void Select_Button()
+
+    public void isCheckButAnimation ()
+    {
+        if (isAnimation == false)
+            isAnimation = true;
+
+
+    }
+     */
+
+    public void Select_ButtonStep()
     {
         Vector3 temp;
         Vector2 Result;
-        bool isAnimation = false;
 
-
+   
         temp = this.GetComponent<RectTransform>().localPosition;
         Result = GameObject.Find("BackGround").GetComponent<Create_Bugker>().Check_Button(temp);
 
-      //  isAnimation = GameObject.Find("BackGround").GetComponent<Create_Bugker>().getAniState();
-      //  if (isAnimation == false)
-      //      return;
+
+        //  isAnimation = GameObject.Find("BackGround").GetComponent<Create_Bugker>().getAniState();
+        //  if (isAnimation == false)
+        //      return;
 
         // 여기서 버거의 노드를 정리하는 문장을 만드러야 한다.
         Debug.Log(Result);
@@ -37,11 +49,32 @@ public class BM_Button_Mgr : MonoBehaviour
         /* 버거 체크 배열이 있는가??  2018.02.12
          *
          */
-
         GameObject.Find("BackGround").GetComponent<BM_Making_Bug>().check_select_bug(NodeNum);
-        
+       // GameObject.Find("BM_Material").GetComponent<BM_AnimationController>().AnimationLookOFF();
 
-      
+
+
+
+    }
+
+    // 버튼이 선택 될시 해당 버튼 노드 삭제와 노드 위치 변경 및, 새로운 노드 생성을 담당하는 함수
+    public void Select_Button()
+    {
+
+        bool isAnimationLook = GameObject.Find("BM_Material").GetComponent<BM_AnimationController>().getAnimationLook();
+
+
+        Debug.Log(isAnimationLook);
+        if (isAnimationLook == false)
+        {
+            GameObject.Find("BM_Material").GetComponent<BM_AnimationController>().AnimationLookON();
+            Select_ButtonStep(); 
+        }
+        else
+        {
+            Debug.Log("애니메이션 중입니다.");
+        }
+
 
     }
 

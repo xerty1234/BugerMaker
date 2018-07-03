@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 
 // 버거 메이커 소스 업데이트
@@ -12,7 +10,8 @@ using UnityEngine;
  * 버거 생성 매커니즘이 바뀌지 않았으니 다시 생각해보아야 한다.
  */
 
-public class BM_GameManger : MonoBehaviour {
+public class BM_GameManger : MonoBehaviour
+{
 
     // 게임이 시작되면 처음으로 가지고 있는 변수값
     const int START_GAMESTATE = 100;

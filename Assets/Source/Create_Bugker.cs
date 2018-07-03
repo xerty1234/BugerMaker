@@ -58,8 +58,10 @@ public class Create_Bugker : MonoBehaviour
     public bool getAniState () { return isAnimation; }
 
     public void setselect_orderNum (int index) { this.select_orderNum = index; }
-    public int getselect_orderNum() { return this.select_orderNum; }
+    public int  getselect_orderNum() { return this.select_orderNum; }
     public void reset_orderNum() { this.select_orderNum = 0; }
+
+
 
     // 버거의 위치이동할때 에니메이션을 위하여 만든 구조체
     // 위치값과 해당 노드의 인덱스
@@ -275,10 +277,12 @@ public class Create_Bugker : MonoBehaviour
             if (index == 1)
             {
                 ANode.RemoveAt(i);
+               
             }
 
         }
 
+   
     }
 
     // 해당 노드의 애니메이션 처리하는 함수 (Animationnode의 인자값을 받는다)
@@ -312,6 +316,7 @@ public class Create_Bugker : MonoBehaviour
             Current_Pos = Last_Pos;
             tempObject.GetComponent<RectTransform>().localPosition = Current_Pos;
             AnimationEnd();
+           
             return 1;
         }
 

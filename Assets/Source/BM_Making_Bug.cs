@@ -79,6 +79,8 @@ public class BM_Making_Bug : MonoBehaviour {
             Debug.Log("틀렸다");
             //return 0;
         }
+
+
     }
             
 
