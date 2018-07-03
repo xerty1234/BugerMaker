@@ -35,7 +35,7 @@ public class BM_Making_Bug : MonoBehaviour {
 
     public void moveCheckindex()   {checkIndex++;}
     public void resetCheckindex()  { checkIndex = 0;}
-    public int getCheckindex()     { return checkIndex; }
+    public int  getCheckindex()     { return checkIndex; }
     public void demoveCheckindex() { checkIndex--; }
 
     //public int getcheckBugArray_Length() { return checkBugArray.Length; }
@@ -59,14 +59,22 @@ public class BM_Making_Bug : MonoBehaviour {
             return;
 
 
+
+        //Debug.Log("버거숫자:"+checkBugArray[checkIndex]);
+        Debug.Log("누른번호:" + tagNum);
+
+
+
         if (checkIndex >= checkBugArray.Length)
         {
             GameObject.Find("BackGround").GetComponent<Create_Bugker>().Delete_Order();
             GameObject.Find("BM_Timer").GetComponent<BM_Timer>().resetTime();
             resetCheckindex();
             Increase();
-
         }
+
+        Debug.Log("버거숫자:" + checkBugArray[checkIndex]);
+
         if (checkBugArray[checkIndex] == tagNum)
         {
             moveCheckindex();
@@ -77,7 +85,7 @@ public class BM_Making_Bug : MonoBehaviour {
         else
         {
             //Debug.Log("틀렸다");
-            //return 0;
+            return;
         }
 
 
@@ -91,8 +99,8 @@ public class BM_Making_Bug : MonoBehaviour {
         switch(Num)
         {
             case 0: return Normal_Bugker;        
-            case 1: return Pineapple_Bugker;    
-            case 2: return Bacon_Bugker;    
+            case 1: return Bacon_Bugker;    
+            case 2: return Pineapple_Bugker;    
             case 3: return Steak_Bugker;    
             default:  return null; 
         }

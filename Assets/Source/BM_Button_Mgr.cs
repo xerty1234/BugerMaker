@@ -71,12 +71,9 @@ public class BM_Button_Mgr : MonoBehaviour
             Select_ButtonStep(); 
         }
 
-        //else
-        //{
-        //    //Debug.Log("애니메이션 중입니다.");
-        //}
+    
 
-
+ 
     }
 
     // 클릭된 버거를 삭제하는 함수 
