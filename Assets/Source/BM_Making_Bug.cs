@@ -59,12 +59,6 @@ public class BM_Making_Bug : MonoBehaviour {
             return;
 
 
-
-        //Debug.Log("버거숫자:"+checkBugArray[checkIndex]);
-        Debug.Log("누른번호:" + tagNum);
-
-
-
         if (checkIndex >= checkBugArray.Length)
         {
             GameObject.Find("BackGround").GetComponent<Create_Bugker>().Delete_Order();
@@ -73,14 +67,12 @@ public class BM_Making_Bug : MonoBehaviour {
             Increase();
         }
 
-        Debug.Log("버거숫자:" + checkBugArray[checkIndex]);
+        //Debug.Log("버거숫자:" + checkBugArray[checkIndex]);
 
         if (checkBugArray[checkIndex] == tagNum)
         {
             moveCheckindex();
             GameObject.Find("BackGround").GetComponent<Create_Bugker>().Change_bugOrder(checkIndex);
-            //Debug.Log("맞았다");
-            //return getCheckindex();
         }
         else
         {
@@ -90,8 +82,6 @@ public class BM_Making_Bug : MonoBehaviour {
 
 
     }
-            
-
 
 
     int[] GetSelect_Bugker(int Num)
@@ -107,13 +97,27 @@ public class BM_Making_Bug : MonoBehaviour {
        
     }
 
-    public GameObject[] getSelect_BugCreate ( int index)
+    // 카피 오브젝트 함수 (지금은 사용하지 않음)
+    public GameObject[] copyBugCreate(GameObject[] obj)
     {
-        switch(index)
+        GameObject[] temp = new GameObject[7];
+        for (int i = 0; i < 6; i++)
+            temp[i] = Instantiate(obj[i]);
+
+        return temp;
+
+
+    }
+
+
+
+    public GameObject[] getSelect_BugCreate ( int index)
+    { 
+        switch (index)
         {
-            case 0:  return Normal_Bugker_obj;
+            case 0: return Normal_Bugker_obj;
             case 1:  return Bacon_Bugker_obj;
-            case 2:  return Pineapple_Bugker_obj;
+            case 2:  return  Pineapple_Bugker_obj;
             case 3:  return Steak_Bugker_obj;
             default: return null;
         }
@@ -217,18 +221,7 @@ public class BM_Making_Bug : MonoBehaviour {
      
     }
 
-    // Update is called once per frame
-    /*
-     * 시간의 의해서 버거 생성 완료
-     * 크기 줄이는 것과, 한번만 실행되는것, 
-     * 2018.02.08, 2018 02.12 추가(삭제루틴)
-     * 삭제루틴 오류 201.02.12 (아직 고쳐지지 않았음)
-     * 이태섭
-     */
-     /*
-      * 이 코드의 문제점은 오더 타이밍을 알 수 있으나, 오더가 된 이후의 타이밍을 알 수가 없다
-      * 
-      * */
+   
 
        // 버거를 생성하는 함수
     void Increase()
@@ -239,12 +232,14 @@ public class BM_Making_Bug : MonoBehaviour {
         //Debug.Log("index = " + index);
         GameObject.Find("BackGround").GetComponent<Create_Bugker>().Create_Order(index);
 
+        Debug.Log("Increase()실행");
         checkBugArray = GetSelect_Bugker(index);
         resetCheckindex();
     }
 
 
-    // 버거가 이미 생성 되어있다면 Reduce 생성이 되지 않았다면 Increase를 생성해
+    // 버거가 이미 생성 되어있다면 Reduce
+    // 생성이 되지 않았다면 Increase를 생성해
     // 주문을 받는다.
     void CreateOrderBug ()
     {
@@ -264,7 +259,7 @@ public class BM_Making_Bug : MonoBehaviour {
     void DelectOrderBug()
     {
         //Debug.Log("버거 삭제 루틴");
-        GameObject.Find("BackGround").GetComponent<Create_Bugker>().Delete_Order();
+        //GameObject.Find("BackGround").GetComponent<Create_Bugker>().Delete_Order();
         if (StopBugOrder != 0) StopBugOrder = 0;
     }
 
@@ -273,8 +268,6 @@ public class BM_Making_Bug : MonoBehaviour {
     void Reduce()
     {
         GameObject.Find("Screen").GetComponent<BM_GameManger>().setReduce(1);
-
-        //GameObject.Find("Screen").GetComponent<BM_GameManger>().printGameStateValue();
 
     }
 

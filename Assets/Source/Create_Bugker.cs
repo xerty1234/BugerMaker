@@ -445,8 +445,33 @@ public class Create_Bugker : MonoBehaviour
         }
      
     }
+        // 버그 발견 .!!
+        // 교체가 이루어 지지만 위치값이 변동되어서 삭제되는것 처럼 보임
+        // 마지막 버거가 완성되었을때 모든 노드를 원상 복귀해놓을 함수가 필요함
+
+    public void swapPostion(GameObject target, GameObject target2)
+    {
+        GameObject[] temp = new GameObject[2];
+        GameObject swap;
+       
+
+        swap = target;
+
+        target.transform.SetParent(target2.transform.parent);
+        target.transform.localPosition = target2.transform.localPosition;
+
+        target2.transform.SetParent(swap.transform.parent);
+        target2.transform.localPosition = swap.transform.localPosition;
 
 
+        //temp[0] = target;
+        //temp[1] = target2;
+
+        //return temp;
+
+    }
+
+    // 입력이 맞았을 경우 버거를 체인지 하는 함수
     public void Change_bugOrder(int checkIndex)
     {
         GameObject tempObject;
@@ -457,26 +482,27 @@ public class Create_Bugker : MonoBehaviour
         nextObject = NextObjects[checkIndex];
 
 
-       
+
 
         for (int i = 0; i < Order_List.Count; i++)
         {
-           // Debug.Log(Order_List.Count);
+            // Debug.Log(Order_List.Count);
             tempObject = Order_List[i];
-            
+
 
             if (tempObject != null && nextObject != null)
             {
-                nextObject.transform.SetParent(tempObject.transform.parent);
-                nextObject.transform.localPosition = tempObject.transform.localPosition;
+                // Debug.Log(nextObject.ToString());
+                // Debug.Log(Order_List.ToString());
+                swapPostion(nextObject, tempObject);
                 Destroy(tempObject);
                 Order_List.RemoveAt(i);
             }
-     
 
-        
+
+
         }
-        if(nextObject != null)
+        if (nextObject != null)
              Order_List.Add(nextObject);
     }
 

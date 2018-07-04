@@ -10,20 +10,6 @@ public class BM_Button_Mgr : MonoBehaviour
 
     public int NodeNum;
 
-    /*
-     * 에니메이션 rock 테스트
-    bool isAnimation = false;
-
-
-    public void isCheckButAnimation ()
-    {
-        if (isAnimation == false)
-            isAnimation = true;
-
-
-    }
-     */
-
     public void Select_ButtonStep()
     {
         Vector3 temp;
@@ -44,11 +30,7 @@ public class BM_Button_Mgr : MonoBehaviour
         // 클릭된 버거를 삭제하는 함수 (클릭된 위치정보)   
         Remove_BugNode(Result);
         Change_of_location(Result);
-
-        // 여기에 버거가 맞는 노드인가를 체크하는 문장이 필요!
-        /* 버거 체크 배열이 있는가??  2018.02.12
-         *
-         */
+       
         GameObject.Find("BackGround").GetComponent<BM_Making_Bug>().check_select_bug(NodeNum);
        // GameObject.Find("BM_Material").GetComponent<BM_AnimationController>().AnimationLookOFF();
 
