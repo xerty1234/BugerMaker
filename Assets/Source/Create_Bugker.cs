@@ -44,6 +44,9 @@ public class Create_Bugker : MonoBehaviour
     //버거오더의 오브젝트를 저장하고 있는 오브젝트 실행
     public GameObject[] BM_Order;
 
+
+    private GameObject swap_order;
+
     int[] NodeCount;
 
     private int select_orderNum;
@@ -416,13 +419,14 @@ public class Create_Bugker : MonoBehaviour
 
         setselect_orderNum(index);
 
-        tempObject = Instantiate(BM_Order[index], Vector3.zero, Quaternion.identity);
+        //tempObject = Instantiate(BM_Order[index], Vector3.zero, Quaternion.identity);
+        tempObject = BM_Order[index];
         tempObject.transform.SetParent(transform);
         tempObject.GetComponent<RectTransform>().localPosition = localOrder;
 
         tempObject.GetComponent<RectTransform>().localPosition = new Vector3(-10f, 100f, 0f);
-        tempObject.transform.localScale = new Vector3(-1f,-1f, 0f);
-        tempObject.transform.rotation = new Quaternion(180f, 0f, 0f,0f);
+        tempObject.transform.localScale = new Vector3(1f,1f, 0f);
+        tempObject.transform.rotation = new Quaternion(0f, 0.0f, 0f,0f);
 
        // Debug.Log(tempObject.GetComponent<RectTransform>().localPosition);
         Order_List.Add(tempObject);
@@ -436,10 +440,15 @@ public class Create_Bugker : MonoBehaviour
     public void Delete_Order ()
     {
         GameObject tempObject;
+        GameObject[] NextObjects;
 
-        for(int i=0; i<Order_List.Count; i++)
+        NextObjects = GameObject.Find("Screen").GetComponent<BM_Making_Bug>().getSelect_BugCreate(getselect_orderNum());
+      
+
+        for (int i=0; i<Order_List.Count; i++)
         {
             tempObject = Order_List[i];
+            //setPostion(tempObject, NextObjects[0]);
             Destroy(tempObject);
             Order_List.RemoveAt(i);
         }
@@ -451,17 +460,17 @@ public class Create_Bugker : MonoBehaviour
 
     public void swapPostion(GameObject target, GameObject target2)
     {
-        GameObject[] temp = new GameObject[2];
-        GameObject swap;
        
+      
+        swap_order.transform.parent = target.transform.parent;
+        swap_order.transform.localPosition = target.transform.localPosition;
 
-        swap = target;
 
         target.transform.SetParent(target2.transform.parent);
         target.transform.localPosition = target2.transform.localPosition;
 
-        target2.transform.SetParent(swap.transform.parent);
-        target2.transform.localPosition = swap.transform.localPosition;
+        target2.transform.SetParent(swap_order.transform.parent);
+        target2.transform.localPosition = swap_order.transform.localPosition;
 
 
         //temp[0] = target;
@@ -470,6 +479,30 @@ public class Create_Bugker : MonoBehaviour
         //return temp;
 
     }
+
+    public void setPostion (GameObject target, GameObject inputObj)
+    {
+        target.transform.SetParent(inputObj.transform.parent);
+        target.transform.localPosition = inputObj.transform.localPosition;
+    }
+
+    public void FinalChange_bugOrder ()
+    {
+        //GameObject[] NextObjects;
+        GameObject tempObject;
+        //NextObjects = GameObject.Find("Screen").GetComponent<BM_Making_Bug>().getSelect_BugCreate(getselect_orderNum());
+
+
+
+        for (int i = 0; i < Order_List.Count; i++)
+        {
+            tempObject = Order_List[i];
+            setPostion(tempObject, swap_order);
+            Order_List.RemoveAt(i);
+        }
+
+    }
+
 
     // 입력이 맞았을 경우 버거를 체인지 하는 함수
     public void Change_bugOrder(int checkIndex)
@@ -492,16 +525,14 @@ public class Create_Bugker : MonoBehaviour
 
             if (tempObject != null && nextObject != null)
             {
-                // Debug.Log(nextObject.ToString());
-                // Debug.Log(Order_List.ToString());
+               
                 swapPostion(nextObject, tempObject);
-                Destroy(tempObject);
                 Order_List.RemoveAt(i);
             }
 
-
-
         }
+
+
         if (nextObject != null)
              Order_List.Add(nextObject);
     }
@@ -510,6 +541,7 @@ public class Create_Bugker : MonoBehaviour
     void Start ()
     {
         Create_BugNode();
+        swap_order = new GameObject();
     }
 	
 	// Update is called once per frame

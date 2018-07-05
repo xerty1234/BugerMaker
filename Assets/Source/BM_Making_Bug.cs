@@ -61,6 +61,7 @@ public class BM_Making_Bug : MonoBehaviour {
 
         if (checkIndex >= checkBugArray.Length)
         {
+            //GameObject.Find("BackGround").GetComponent<Create_Bugker>().Change_bugOrder(checkIndex);
             GameObject.Find("BackGround").GetComponent<Create_Bugker>().Delete_Order();
             GameObject.Find("BM_Timer").GetComponent<BM_Timer>().resetTime();
             resetCheckindex();
@@ -74,6 +75,14 @@ public class BM_Making_Bug : MonoBehaviour {
             moveCheckindex();
             GameObject.Find("BackGround").GetComponent<Create_Bugker>().Change_bugOrder(checkIndex);
         }
+
+        else if (checkBugArray[checkIndex] == 100)
+        {
+            moveCheckindex();
+            GameObject.Find("BackGround").GetComponent<Create_Bugker>().FinalChange_bugOrder();
+        }
+                
+
         else
         {
             //Debug.Log("틀렸다");
@@ -96,19 +105,6 @@ public class BM_Making_Bug : MonoBehaviour {
         }
        
     }
-
-    // 카피 오브젝트 함수 (지금은 사용하지 않음)
-    public GameObject[] copyBugCreate(GameObject[] obj)
-    {
-        GameObject[] temp = new GameObject[7];
-        for (int i = 0; i < 6; i++)
-            temp[i] = Instantiate(obj[i]);
-
-        return temp;
-
-
-    }
-
 
 
     public GameObject[] getSelect_BugCreate ( int index)
