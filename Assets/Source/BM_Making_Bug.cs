@@ -81,15 +81,17 @@ public class BM_Making_Bug : MonoBehaviour {
             GameObject.Find("BackGround").GetComponent<Create_Bugker>().Change_bugOrder(checkIndex);
         }
 
-        else if (checkBugArray[checkIndex] == 100)
-        {
-            moveCheckindex();
-            GameObject.Find("BackGround").GetComponent<Create_Bugker>().FinalChange_bugOrder();
-        }
+        //else if (checkBugArray[checkIndex] == 100)
+        //{
+        //    moveCheckindex();
+        //    GameObject.Find("BackGround").GetComponent<Create_Bugker>().FinalChange_bugOrder();
+        //}
                 
 
         else
         {
+
+            GameObject.Find("BackGround").GetComponent<Create_Bugker>().Mistake_BugOrder(checkIndex);
             return;
         }
 

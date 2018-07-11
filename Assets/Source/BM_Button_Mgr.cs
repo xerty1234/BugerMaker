@@ -11,6 +11,9 @@ public class BM_Button_Mgr : MonoBehaviour
     public int NodeNum;
 
 
+    
+
+    // 마지막 버거를 클릭하면 실행되는 함수 (함수를 
     public void SelectCompleteBuger()
     {
 
@@ -18,10 +21,14 @@ public class BM_Button_Mgr : MonoBehaviour
              GameObject.Find("BackGround").GetComponent<BM_Making_Bug>().getMAXcheckBugArray() -1
             )
         {
+            GameObject.Find("BackGround").GetComponent<Create_Bugker>().FinalChange_bugOrder();
             GameObject.Find("BackGround").GetComponent<Create_Bugker>().Delete_Order();
             GameObject.Find("BM_Timer").GetComponent<BM_Timer>().resetTime();
-            GameObject.Find("BackGround").GetComponent<BM_Making_Bug>().resetCheckindex();
+          
+            //GameObject.Find("BackGround").GetComponent<BM_Making_Bug>().resetCheckindex();
             GameObject.Find("BackGround").GetComponent<BM_Making_Bug>().Increase();
+            //GameObject.Find("BackGround").GetComponent<BM_Making_Bug>().moveCheckindex();
+            
         }
     }
 

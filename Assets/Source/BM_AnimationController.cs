@@ -19,7 +19,12 @@ public class BM_AnimationController : MonoBehaviour
     private float currentTime = 0.0f;
 
 
-    
+    private bool isMistake = false;
+    private bool isOrder_AnimationStart = false;
+    private float Order_AnimationTime = 0.5f;
+    private float Order_currentTime = 0.0f;
+
+
     public void AnimationLookON()
     {
         AnimationLook = true;
@@ -34,10 +39,11 @@ public class BM_AnimationController : MonoBehaviour
 
     public bool getAnimationLook()  {return AnimationLook;}
    
-
     
-
-
+    public void Order_AnimationON() { isMistake = true; }
+    public void Order_AnimationOFF() { isMistake = false; }
+    public bool isOrder_Animation() { return isMistake; }
+    public bool IsOrder_AnimationStart() { return isOrder_AnimationStart; }
 
     // Use this for initialization
     void Start ()
@@ -46,8 +52,8 @@ public class BM_AnimationController : MonoBehaviour
         startTime = false;
     }
 
-    // Update is called once per frame
-    void Update ()
+
+    void nodeAnimation ()
     {
         if (AnimationLook == true)
         {
@@ -66,7 +72,43 @@ public class BM_AnimationController : MonoBehaviour
                 AnimationLookOFF();
             }
         }
-      
-  
-	}
+
+    }
+
+
+    // 다른 것이 입력되었을 경우 사용되는 애니메이션
+    void Order_Animation ()
+    {
+        if (isOrder_Animation() == true)
+        {
+            if (isOrder_AnimationStart == false)
+            {
+                Order_currentTime = Time.time + Order_AnimationTime;
+                isOrder_AnimationStart = true;
+            }
+
+
+            if (Time.time > Order_currentTime)
+            {
+                // nextTime = Time.time + DeleTime;
+                Order_currentTime = 0.0f;
+                isOrder_AnimationStart = false;
+                Order_AnimationOFF();
+            }
+        }
+
+    }
+
+    void orderAnimation ()
+    {
+
+    }
+
+    // Update is called once per frame
+    void Update ()
+    {
+       nodeAnimation();
+       Order_Animation();
+
+    }
 }

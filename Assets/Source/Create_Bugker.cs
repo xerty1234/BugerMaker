@@ -48,12 +48,13 @@ public class Create_Bugker : MonoBehaviour
 
 
     private GameObject swap_order;
+    private GameObject Mistake_Order;
 
     int[] NodeCount;
 
     private int select_orderNum;
-
-
+    float randomX = 4.0f;
+   
 
     public List<GameObject> Order_List;
 
@@ -513,7 +514,7 @@ public class Create_Bugker : MonoBehaviour
 
         for (int i = 0; i < Order_List.Count; i++)
         {
-            // Debug.Log(Order_List.Count);
+            //Debug.Log(Order_List.Count);
             tempObject = Order_List[i];
 
 
@@ -531,6 +532,33 @@ public class Create_Bugker : MonoBehaviour
              Order_List.Add(nextObject);
     }
 
+    public void Mistake_BugOrder (int checkIndex)
+    {
+        GameObject tempObject;
+        GameObject[] NextObjects;
+
+       
+        NextObjects = GameObject.Find("Screen").GetComponent<BM_Making_Bug>().getSelect_BugCreate(getselect_orderNum());
+        tempObject = NextObjects[checkIndex];
+        Mistake_Order = tempObject;
+        GameObject.Find("BM_Bugker").GetComponent<BM_AnimationController>().Order_AnimationON();
+
+    }
+
+    void Mistake_Animation ()
+    {
+        // && GameObject.Find("BM_Bugker").GetComponent<BM_AnimationController>().IsOrder_AnimationStart() == true
+        if (Mistake_Order != null
+           && GameObject.Find("BM_Bugker").GetComponent<BM_AnimationController>().IsOrder_AnimationStart() == true)
+        {
+            randomX = randomX * (-1);
+            Mistake_Order.transform.Translate(randomX, 0, 0);
+        }
+
+
+    }
+
+
 
     void Start ()
     {
@@ -542,5 +570,6 @@ public class Create_Bugker : MonoBehaviour
 	void Update ()
     {
         Check_Animation();
+        Mistake_Animation();
     }
 }
