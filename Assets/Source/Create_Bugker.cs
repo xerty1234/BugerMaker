@@ -456,7 +456,7 @@ public class Create_Bugker : MonoBehaviour
         for (int i=0; i<Order_List.Count; i++)
         {
             tempObject = Order_List[i];
-            //setPostion(tempObject, NextObjects[0]);
+            
             Destroy(tempObject);
             Order_List.RemoveAt(i);
         }
@@ -482,6 +482,7 @@ public class Create_Bugker : MonoBehaviour
     }
 
     public void setPostion (GameObject target, GameObject inputObj)
+        
     {
         target.transform.SetParent(inputObj.transform.parent);
         target.transform.localPosition = inputObj.transform.localPosition;
