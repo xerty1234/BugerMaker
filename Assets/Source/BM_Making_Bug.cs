@@ -37,6 +37,7 @@ public class BM_Making_Bug : MonoBehaviour {
     public void resetCheckindex()  { checkIndex = 0;}
     public int  getCheckindex()     { return checkIndex; }
     public void demoveCheckindex() { checkIndex--; }
+    public int getMAXcheckBugArray() { return checkBugArray.Length; }
 
     //public int getcheckBugArray_Length() { return checkBugArray.Length; }
 
@@ -57,9 +58,12 @@ public class BM_Making_Bug : MonoBehaviour {
         // 버거를 다 맞춘다음 버거를 삭제하고 
         if (checkBugArray == null)
             return;
+        if (checkIndex >= checkBugArray.Length - 1)
+            return;
 
-
-        if (checkIndex >= checkBugArray.Length)
+        /*
+        // 버거 클릭이 일어난 후에 일어냐야함
+        if (checkIndex >= checkBugArray.Length && GameObject.Find("BackGround").GetComponent<Create_Bugker>().isCreateBugerComplete() != false)
         {
             //GameObject.Find("BackGround").GetComponent<Create_Bugker>().Change_bugOrder(checkIndex);
             GameObject.Find("BackGround").GetComponent<Create_Bugker>().Delete_Order();
@@ -67,6 +71,7 @@ public class BM_Making_Bug : MonoBehaviour {
             resetCheckindex();
             Increase();
         }
+        */
 
         //Debug.Log("버거숫자:" + checkBugArray[checkIndex]);
 
@@ -85,7 +90,6 @@ public class BM_Making_Bug : MonoBehaviour {
 
         else
         {
-            //Debug.Log("틀렸다");
             return;
         }
 
@@ -220,7 +224,7 @@ public class BM_Making_Bug : MonoBehaviour {
    
 
        // 버거를 생성하는 함수
-    void Increase()
+    public void Increase()
     {
         int temp, index;
         temp = GameObject.Find("BackGround").GetComponent<Create_Bugker>().getBM_OrederMAXindex();

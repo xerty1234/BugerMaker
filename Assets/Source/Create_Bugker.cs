@@ -10,6 +10,8 @@ using UnityEngine;
 public class Create_Bugker : MonoBehaviour
 {
 
+
+    bool CreateBugerComplete = false;
     bool isAnimation = false;
   
     public Vector3 localOrder;
@@ -63,6 +65,11 @@ public class Create_Bugker : MonoBehaviour
     public void setselect_orderNum (int index) { this.select_orderNum = index; }
     public int  getselect_orderNum() { return this.select_orderNum; }
     public void reset_orderNum() { this.select_orderNum = 0; }
+
+    // 버거 스위치함수
+    public void Create_BugerComplete() { CreateBugerComplete = true; }
+    public void Create_BugerStart ()   {CreateBugerComplete = false;}
+    public bool isCreateBugerComplete() {return CreateBugerComplete; }
 
 
 
@@ -454,7 +461,6 @@ public class Create_Bugker : MonoBehaviour
         }
      
     }
-        // 버그 발견 .!!
         // 교체가 이루어 지지만 위치값이 변동되어서 삭제되는것 처럼 보임
         // 마지막 버거가 완성되었을때 모든 노드를 원상 복귀해놓을 함수가 필요함
 
@@ -472,12 +478,6 @@ public class Create_Bugker : MonoBehaviour
         target2.transform.SetParent(swap_order.transform.parent);
         target2.transform.localPosition = swap_order.transform.localPosition;
 
-
-        //temp[0] = target;
-        //temp[1] = target2;
-
-        //return temp;
-
     }
 
     public void setPostion (GameObject target, GameObject inputObj)
@@ -487,12 +487,9 @@ public class Create_Bugker : MonoBehaviour
     }
 
     public void FinalChange_bugOrder ()
-    {
-        //GameObject[] NextObjects;
+    {      
         GameObject tempObject;
-        //NextObjects = GameObject.Find("Screen").GetComponent<BM_Making_Bug>().getSelect_BugCreate(getselect_orderNum());
-
-
+     
 
         for (int i = 0; i < Order_List.Count; i++)
         {
@@ -513,9 +510,6 @@ public class Create_Bugker : MonoBehaviour
 
         NextObjects = GameObject.Find("Screen").GetComponent<BM_Making_Bug>().getSelect_BugCreate(getselect_orderNum());
         nextObject = NextObjects[checkIndex];
-
-
-
 
         for (int i = 0; i < Order_List.Count; i++)
         {

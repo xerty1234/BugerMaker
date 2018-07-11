@@ -10,6 +10,21 @@ public class BM_Button_Mgr : MonoBehaviour
 
     public int NodeNum;
 
+
+    public void SelectCompleteBuger()
+    {
+
+        if (GameObject.Find("BackGround").GetComponent<BM_Making_Bug>().getCheckindex() >=
+             GameObject.Find("BackGround").GetComponent<BM_Making_Bug>().getMAXcheckBugArray() -1
+            )
+        {
+            GameObject.Find("BackGround").GetComponent<Create_Bugker>().Delete_Order();
+            GameObject.Find("BM_Timer").GetComponent<BM_Timer>().resetTime();
+            GameObject.Find("BackGround").GetComponent<BM_Making_Bug>().resetCheckindex();
+            GameObject.Find("BackGround").GetComponent<BM_Making_Bug>().Increase();
+        }
+    }
+
     public void Select_ButtonStep()
     {
         Vector3 temp;
