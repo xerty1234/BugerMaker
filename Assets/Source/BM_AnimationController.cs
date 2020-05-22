@@ -7,7 +7,7 @@ using UnityEngine;
  * Animation 딜레이 변수
  * 애니메이션 중에 입력이 발생하면 오류가 나기 때문에 오류 방지 락 함수
  * DeleTime 만큼의 딜레이를 주어서 애니메이션 효과를 준다.
- *
+ *  테스트 커밋이비낟.
  */
 
 public class BM_AnimationController : MonoBehaviour
