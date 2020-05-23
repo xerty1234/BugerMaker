@@ -2,6 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+/********************************************************************************
+* @classDescription 버거 애니메이션 스크립트
+* @author LTS Corp.
+* @version 1.0
+* -------------------------------------------------------------------------------
+* Modification Information
+* Date              Developer           Content
+* ----------        -------------       -------------------------
+* 2020/05/24        이태섭              신규생성
+* 
+* -------------------------------------------------------------------------------
+* Copyright (C) 2020 by LTS Corp. All rights reserved.
+*********************************************************************************/
+
 /*
  * 2018.07.03 
  * Animation 딜레이 변수
@@ -55,12 +70,13 @@ public class BM_AnimationController : MonoBehaviour
 
     void nodeAnimation ()
     {
+       
         if (AnimationLook == true)
         {
             if (startTime == false)
             {
                 currentTime = Time.time + DeleTime;
-                startTime = true;
+                startTime = true;                
             }
 
 
@@ -79,12 +95,14 @@ public class BM_AnimationController : MonoBehaviour
     // 다른 것이 입력되었을 경우 사용되는 애니메이션
     void Order_Animation ()
     {
+        
         if (isOrder_Animation() == true)
         {
             if (isOrder_AnimationStart == false)
             {
                 Order_currentTime = Time.time + Order_AnimationTime;
                 isOrder_AnimationStart = true;
+                BM_SoundManager.instance.playEff03Sound();
             }
 
 
@@ -96,7 +114,6 @@ public class BM_AnimationController : MonoBehaviour
                 Order_AnimationOFF();
             }
         }
-
     }
 
     void orderAnimation ()

@@ -2,6 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/********************************************************************************
+* @classDescription 사운드 관리 스크립트
+* @author LTS Corp.
+* @version 1.0
+* -------------------------------------------------------------------------------
+* Modification Information
+* Date              Developer           Content
+* ----------        -------------       -------------------------
+* 2020/05/24        이태섭              신규생성
+* 
+* -------------------------------------------------------------------------------
+* Copyright (C) 2020 by LTS Corp. All rights reserved.
+*********************************************************************************/
+
+
 
 // 각 버거가 어떤 버거가 생성이 되어야 하는지 알려주는 함수
 
@@ -56,24 +71,11 @@ public class BM_Making_Bug : MonoBehaviour {
     {
 
         // 버거를 다 맞춘다음 버거를 삭제하고 
-        if (checkBugArray == null)
-            return;
+        if (checkBugArray == null) {return;}
         if (checkIndex >= checkBugArray.Length - 1)
-            return;
-
-        /*
-        // 버거 클릭이 일어난 후에 일어냐야함
-        if (checkIndex >= checkBugArray.Length && GameObject.Find("BackGround").GetComponent<Create_Bugker>().isCreateBugerComplete() != false)
         {
-            //GameObject.Find("BackGround").GetComponent<Create_Bugker>().Change_bugOrder(checkIndex);
-            GameObject.Find("BackGround").GetComponent<Create_Bugker>().Delete_Order();
-            GameObject.Find("BM_Timer").GetComponent<BM_Timer>().resetTime();
-            resetCheckindex();
-            Increase();
+            return;
         }
-        */
-
-        //Debug.Log("버거숫자:" + checkBugArray[checkIndex]);
 
         if (checkBugArray[checkIndex] == tagNum)
         {
@@ -81,16 +83,8 @@ public class BM_Making_Bug : MonoBehaviour {
             GameObject.Find("BackGround").GetComponent<Create_Bugker>().Change_bugOrder(checkIndex);
         }
 
-        //else if (checkBugArray[checkIndex] == 100)
-        //{
-        //    moveCheckindex();
-        //    GameObject.Find("BackGround").GetComponent<Create_Bugker>().FinalChange_bugOrder();
-        //}
-                
-
         else
         {
-
             GameObject.Find("BackGround").GetComponent<Create_Bugker>().Mistake_BugOrder(checkIndex);
             return;
         }
@@ -117,7 +111,7 @@ public class BM_Making_Bug : MonoBehaviour {
     { 
         switch (index)
         {
-            case 0: return Normal_Bugker_obj;
+            case 0:  return Normal_Bugker_obj;
             case 1:  return Bacon_Bugker_obj;
             case 2:  return  Pineapple_Bugker_obj;
             case 3:  return Steak_Bugker_obj;
@@ -146,8 +140,7 @@ public class BM_Making_Bug : MonoBehaviour {
         while(true)
         {
             temp = Random.Range(0, 3);
-            if (CreateBug[temp] != 0)
-                return temp;
+            if (CreateBug[temp] != 0) {return temp;}
         }
 
         //return temp;
@@ -162,7 +155,6 @@ public class BM_Making_Bug : MonoBehaviour {
 
         List<int> Search_BugNode;
 
-   
         temp = 0;
         Count = 0;
 
@@ -207,24 +199,19 @@ public class BM_Making_Bug : MonoBehaviour {
         }
 
         // 만들어저도 된다면 모든값이 지워짐으로 Count는 0이된다.
-        if (Search_BugNode.Count == 0)
-            return 1;
+        if (Search_BugNode.Count == 0){ return 1;}
+
         // 노드값이 있으면 Count가 0이 아님으로 0을 리턴한다.
-        else
-            return 0;
+        else {return 0;}
             
     }
-
-
 
     // Use this for initialization
     void Start ()
     {
      
     }
-
-   
-
+  
        // 버거를 생성하는 함수
     public void Increase()
     {
@@ -260,12 +247,8 @@ public class BM_Making_Bug : MonoBehaviour {
 
     void DelectOrderBug()
     {
-        //Debug.Log("버거 삭제 루틴");
-        //GameObject.Find("BackGround").GetComponent<Create_Bugker>().Delete_Order();
-        if (StopBugOrder != 0) StopBugOrder = 0;
+        if (StopBugOrder != 0) {StopBugOrder = 0;}
     }
-
-
 
     void Reduce()
     {
@@ -273,51 +256,11 @@ public class BM_Making_Bug : MonoBehaviour {
 
     }
 
-
-
     void Update()
     {
         if (GameObject.Find("BM_Timer").GetComponent<BM_Timer>().check_BugTime())
+        {
             CreateOrderBug();
-   
-        /*
-        //2018.02.12 추가
-        if (GameObject.Find("BM_Timer").GetComponent<BM_Timer>().check_BugTime() == 1)
-        {
-            int temp, index;
-
-            if (StopBugOrder == 0)
-            {
-                temp = GameObject.Find("BackGround").GetComponent<Create_Bugker>().getBM_OrederMAXindex();
-                index = Random.Range(0, temp);
-                Debug.Log("index = " + index);
-                GameObject.Find("BackGround").GetComponent<Create_Bugker>().Create_Order(index);
-                if (StopBugOrder != 1)StopBugOrder = 1;
-            }
-            else
-            {
-                Debug.Log("버거 삭제 루틴");
-                GameObject.Find("BackGround").GetComponent<Create_Bugker>().Delect_Order();
-                if (StopBugOrder !=0) StopBugOrder = 0;
-            }
         }
-        */
-
-          /*
-         * 버거 삭제 루틴이 잘 되는지 테스트 
-         */
-
-        /*
-        if (StopBugOrder == 1 
-          && GameObject.Find("BM_Timer").GetComponent<BM_Timer>().getDelectBug() == true)
-        {
-            // 삭제루틴
-            Debug.Log("버거 삭제 루틴");
-            GameObject.Find("BackGround").GetComponent<Create_Bugker>().Delect_Order();
-            StopBugOrder = 0;
-
-        }
-        */
-
     }
 }

@@ -2,6 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/********************************************************************************
+* @classDescription 버튼 메니저 스크립트
+* @author LTS Corp.
+* @version 1.0
+* -------------------------------------------------------------------------------
+* Modification Information
+* Date              Developer           Content
+* ----------        -------------       -------------------------
+* 2020/05/24        이태섭              신규생성
+* 
+* -------------------------------------------------------------------------------
+* Copyright (C) 2020 by LTS Corp. All rights reserved.
+*********************************************************************************/
 
 // 각 버거 노드의 생성, 삭제 담당하는 스크립트
 
@@ -10,25 +23,18 @@ public class BM_Button_Mgr : MonoBehaviour
 
     public int NodeNum;
 
-
-    
-
     // 마지막 버거를 클릭하면 실행되는 함수 (함수를 
     public void SelectCompleteBuger()
     {
 
-        if (GameObject.Find("BackGround").GetComponent<BM_Making_Bug>().getCheckindex() >=
+        if ( GameObject.Find("BackGround").GetComponent<BM_Making_Bug>().getCheckindex() >=
              GameObject.Find("BackGround").GetComponent<BM_Making_Bug>().getMAXcheckBugArray() -1
-            )
+           )
         {
             GameObject.Find("BackGround").GetComponent<Create_Bugker>().FinalChange_bugOrder();
             GameObject.Find("BackGround").GetComponent<Create_Bugker>().Delete_Order();
             GameObject.Find("BM_Timer").GetComponent<BM_Timer>().resetTime();
-          
-            //GameObject.Find("BackGround").GetComponent<BM_Making_Bug>().resetCheckindex();
-            GameObject.Find("BackGround").GetComponent<BM_Making_Bug>().Increase();
-            //GameObject.Find("BackGround").GetComponent<BM_Making_Bug>().moveCheckindex();
-            
+            GameObject.Find("BackGround").GetComponent<BM_Making_Bug>().Increase();   
         }
     }
 
@@ -37,28 +43,19 @@ public class BM_Button_Mgr : MonoBehaviour
         Vector3 temp;
         Vector2 Result;
 
-   
         temp = this.GetComponent<RectTransform>().localPosition;
         Result = GameObject.Find("BackGround").GetComponent<Create_Bugker>().Check_Button(temp);
-
-
-        //  isAnimation = GameObject.Find("BackGround").GetComponent<Create_Bugker>().getAniState();
-        //  if (isAnimation == false)
-        //      return;
-
+ 
         // 여기서 버거의 노드를 정리하는 문장을 만드러야 한다.
-       // Debug.Log(Result);
+
 
         // 클릭된 버거를 삭제하는 함수 (클릭된 위치정보)   
         Remove_BugNode(Result);
+        
         Change_of_location(Result);
        
         GameObject.Find("BackGround").GetComponent<BM_Making_Bug>().check_select_bug(NodeNum);
-       // GameObject.Find("BM_Material").GetComponent<BM_AnimationController>().AnimationLookOFF();
-
-
-
-
+     
     }
 
     // 버튼이 선택 될시 해당 버튼 노드 삭제와 노드 위치 변경 및, 새로운 노드 생성을 담당하는 함수
@@ -66,18 +63,12 @@ public class BM_Button_Mgr : MonoBehaviour
     {
 
         bool isAnimationLook = GameObject.Find("BM_Material").GetComponent<BM_AnimationController>().getAnimationLook();
-       // Debug.Log(NodeNum);
-
-       // Debug.Log(isAnimationLook);
+    
         if (isAnimationLook == false)
         {
             GameObject.Find("BM_Material").GetComponent<BM_AnimationController>().AnimationLookON();
             Select_ButtonStep(); 
         }
-
-    
-
- 
     }
 
     // 클릭된 버거를 삭제하는 함수 
@@ -93,8 +84,10 @@ public class BM_Button_Mgr : MonoBehaviour
 
         // 오류가 나오게 되면 1000을 리턴함으로 오류 문장 삽입 예정
         if (temp == 1000)
+        {
             return;
-
+        }
+        
         else
         {
             // 노드를 삭제하는 함수
@@ -103,13 +96,9 @@ public class BM_Button_Mgr : MonoBehaviour
             GameObject.Find("BackGround").GetComponent<Create_Bugker>().LBug_Node.RemoveAt(temp);
             // 어떤 노드가 삭제되어서 그 값을 삭제해주는 함수
             GameObject.Find("BackGround").GetComponent<Create_Bugker>().Count_Delete_BugNode(NodeNum);
-
-
         }
 
     }
-
-
 
     // 버거의 위치를 바꾸어주는 함수
     void Change_of_location(Vector2 Pos)
@@ -139,7 +128,6 @@ public class BM_Button_Mgr : MonoBehaviour
             for (int i = y; i > 0; i--)
             {
                 GameObject.Find("BackGround").GetComponent<Create_Bugker>().Change_Bug(x, i);
-
             }
         }
 

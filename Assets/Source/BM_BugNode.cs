@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// 사용하지 않는 지 확인 필요
+
 /*
  * 2018.02.12 새로운 버거 구현 사항
  * 1. 버거 노드가 삭제 되었을 때 올바른 노드인가 아닌가?를 검사하는 함수
