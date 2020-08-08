@@ -23,7 +23,12 @@ public class BM_SoundManager : MonoBehaviour {
 
 
 public static BM_SoundManager instance;
-AudioSource myAudio;
+public AudioSource audioSound;
+
+public AudioClip[] audioClipEffect;
+public AudioClip[] audioClipBgm;
+
+
 
 private string isStageSoundPlay;
 public string getIsStageSoundPlay() {return isStageSoundPlay;}
@@ -33,13 +38,6 @@ public string setplayStageSound(string str)
 	playStage01Sound();
 	return isStageSoundPlay;
 }
-
-public AudioClip sndEff01;		//효과음1
-public AudioClip sndEff02;		// 효과음2
-public AudioClip sndEff03;		// 효과음3
-public AudioClip sndStage01;	// 스테이지 BGM1
-public AudioClip sndEme01;		// 위기 BGM
-
 
 	private void Awake()
 	{
@@ -52,31 +50,32 @@ public AudioClip sndEme01;		// 위기 BGM
 	// Use this for initialization
 	void Start () 
 	{
-		myAudio = GetComponent<AudioSource>();
+		audioSound = GetComponent<AudioSource>();
 	}
 	
 
 	public void playEff01Sound()
 	{
-		myAudio.PlayOneShot(sndEff01);
+		audioSound.PlayOneShot(audioClipEffect[0]);
 	}
 
 
 	public void playEff02Sound()
 	{
-		myAudio.PlayOneShot(sndEff02);
+		audioSound.PlayOneShot(audioClipEffect[1]);
 	}
 
 	
 	public void playEff03Sound()
 	{
-		myAudio.PlayOneShot(sndEff03);
+		audioSound.PlayOneShot(audioClipEffect[2]);
 	}
 
 	
 	public void playEme01Sound()
 	{
-		myAudio.PlayOneShot(sndEme01);
+		audioSound.clip = audioClipBgm[1];
+		audioSound.PlayOneShot(audioClipBgm[1]);
 		
 	}
 
@@ -84,16 +83,19 @@ public AudioClip sndEme01;		// 위기 BGM
 	public void playStage01Sound()
 	{
 		if (isStageSoundPlay == "play")
-		{
-			myAudio.PlayOneShot(sndStage01);
+		{		
+			audioSound.clip = audioClipBgm[0];
+			audioSound.Play();
+			audioSound.loop = true;
 		}
+		
+
 	}
 	// Update is called once per frame
 	void Update () 
 	{
-		if (myAudio.isPlaying == false )
-		{
-			playStage01Sound();
-		}
+
 	}
+
+	
 }

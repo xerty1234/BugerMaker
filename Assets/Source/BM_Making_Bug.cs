@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /********************************************************************************
-* @classDescription 사운드 관리 스크립트
+* @classDescription 버거 생성 스크립트
 * @author LTS Corp.
 * @version 1.0
 * -------------------------------------------------------------------------------
