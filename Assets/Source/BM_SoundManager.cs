@@ -25,6 +25,15 @@ public class BM_SoundManager : MonoBehaviour {
 public static BM_SoundManager instance;
 AudioSource myAudio;
 
+private string isStageSoundPlay;
+public string getIsStageSoundPlay() {return isStageSoundPlay;}
+public string setplayStageSound(string str) 
+{
+	isStageSoundPlay = str;
+	playStage01Sound();
+	return isStageSoundPlay;
+}
+
 public AudioClip sndEff01;		//효과음1
 public AudioClip sndEff02;		// 효과음2
 public AudioClip sndEff03;		// 효과음3
@@ -36,7 +45,7 @@ public AudioClip sndEme01;		// 위기 BGM
 	{
 		if (instance == null)
 		{
-			instance =this;
+			instance = this;
 		}
 	}
 
@@ -68,16 +77,23 @@ public AudioClip sndEme01;		// 위기 BGM
 	public void playEme01Sound()
 	{
 		myAudio.PlayOneShot(sndEme01);
+		
 	}
 
 
 	public void playStage01Sound()
 	{
-		myAudio.PlayOneShot(sndStage01);
+		if (isStageSoundPlay == "play")
+		{
+			myAudio.PlayOneShot(sndStage01);
+		}
 	}
 	// Update is called once per frame
 	void Update () 
 	{
-		
+		if (myAudio.isPlaying == false )
+		{
+			playStage01Sound();
+		}
 	}
 }

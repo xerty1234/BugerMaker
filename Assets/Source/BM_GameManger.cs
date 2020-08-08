@@ -34,7 +34,12 @@ public class BM_GameManger : MonoBehaviour
     private int GameStateValue;
 
     // 처음 게임이 시작될때 가지고 있는 값
-    public void setGameStart () { GameStateValue = START_GAMESTATE; }
+    public void setGameStart () 
+    { 
+        GameStateValue = START_GAMESTATE;
+        BM_SoundManager.instance.setplayStageSound("play");
+        
+    }
     // 버거가 일정시간이 되도록 사라지지 않을때 호출하는 메서드
     public void setReduce(int ReducePower) { GameStateValue -= ReducePower; }
     // 버거가 다 만들어지고 성공적으로 배달되면 호출하는 메서드

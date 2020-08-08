@@ -506,7 +506,6 @@ public class Create_Bugker : MonoBehaviour
     {      
         GameObject tempObject;
      
-
         for (int i = 0; i < Order_List.Count; i++)
         {
             tempObject = Order_List[i];
@@ -527,6 +526,9 @@ public class Create_Bugker : MonoBehaviour
         NextObjects = GameObject.Find("Screen").GetComponent<BM_Making_Bug>().getSelect_BugCreate(getselect_orderNum());
         nextObject = NextObjects[checkIndex];
 
+        BM_SoundManager.instance.playEff02Sound();
+        
+                
         for (int i = 0; i < Order_List.Count; i++)
         {
             //Debug.Log(Order_List.Count);
@@ -556,6 +558,9 @@ public class Create_Bugker : MonoBehaviour
         NextObjects = GameObject.Find("Screen").GetComponent<BM_Making_Bug>().getSelect_BugCreate(getselect_orderNum());
         tempObject = NextObjects[checkIndex];
         Mistake_Order = tempObject;
+        
+        
+        BM_SoundManager.instance.playEff03Sound();
         GameObject.Find("BM_Bugker").GetComponent<BM_AnimationController>().Order_AnimationON();
 
     }

@@ -31,10 +31,13 @@ public class BM_Button_Mgr : MonoBehaviour
              GameObject.Find("BackGround").GetComponent<BM_Making_Bug>().getMAXcheckBugArray() -1
            )
         {
+            
             GameObject.Find("BackGround").GetComponent<Create_Bugker>().FinalChange_bugOrder();
             GameObject.Find("BackGround").GetComponent<Create_Bugker>().Delete_Order();
             GameObject.Find("BM_Timer").GetComponent<BM_Timer>().resetTime();
-            GameObject.Find("BackGround").GetComponent<BM_Making_Bug>().Increase();   
+            GameObject.Find("BackGround").GetComponent<BM_Making_Bug>().Increase();
+          
+            BM_SoundManager.instance.playEff01Sound();   
         }
     }
 
@@ -51,7 +54,8 @@ public class BM_Button_Mgr : MonoBehaviour
 
         // 클릭된 버거를 삭제하는 함수 (클릭된 위치정보)   
         Remove_BugNode(Result);
-        
+
+
         Change_of_location(Result);
        
         GameObject.Find("BackGround").GetComponent<BM_Making_Bug>().check_select_bug(NodeNum);

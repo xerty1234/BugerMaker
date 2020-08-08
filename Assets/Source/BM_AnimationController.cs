@@ -22,7 +22,6 @@ using UnityEngine;
  * Animation 딜레이 변수
  * 애니메이션 중에 입력이 발생하면 오류가 나기 때문에 오류 방지 락 함수
  * DeleTime 만큼의 딜레이를 주어서 애니메이션 효과를 준다.
- *  테스트 커밋이비낟.
  */
 
 public class BM_AnimationController : MonoBehaviour
@@ -82,7 +81,6 @@ public class BM_AnimationController : MonoBehaviour
 
             if (Time.time > currentTime)
             {
-                // nextTime = Time.time + DeleTime;
                 currentTime = 0.0f;
                 startTime = false;
                 AnimationLookOFF();
@@ -102,13 +100,12 @@ public class BM_AnimationController : MonoBehaviour
             {
                 Order_currentTime = Time.time + Order_AnimationTime;
                 isOrder_AnimationStart = true;
-                BM_SoundManager.instance.playEff03Sound();
             }
 
+          
 
             if (Time.time > Order_currentTime)
             {
-                // nextTime = Time.time + DeleTime;
                 Order_currentTime = 0.0f;
                 isOrder_AnimationStart = false;
                 Order_AnimationOFF();
