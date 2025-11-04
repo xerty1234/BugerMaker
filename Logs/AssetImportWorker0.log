@@ -15,7 +15,7 @@ C:/Game/BugerMaker
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-14272
+13585
 Successfully changed project path to: C:/Game/BugerMaker
 C:/Game/BugerMaker
 [UnityMemory] Configuration Parameters - Can be set up in boot.config
@@ -47,12 +47,12 @@ C:/Game/BugerMaker
     "memorysetup-temp-allocator-size-cloud-worker=32768"
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
-Player connection [7392] Host "[IP] 192.168.45.28 [Port] 0 [Flags] 2 [Guid] 1019515497 [EditorId] 1019515497 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-9JJ5TDB) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
+Player connection [29356] Host "[IP] 192.168.45.28 [Port] 0 [Flags] 2 [Guid] 1597216792 [EditorId] 1597216792 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-9JJ5TDB) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
 
-Player connection [7392] Host "[IP] 192.168.45.28 [Port] 0 [Flags] 2 [Guid] 1019515497 [EditorId] 1019515497 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-9JJ5TDB) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
+Player connection [29356] Host "[IP] 192.168.45.28 [Port] 0 [Flags] 2 [Guid] 1597216792 [EditorId] 1597216792 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-9JJ5TDB) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
 
 [Physics::Module] Initialized MultithreadedJobDispatcher with {0} workers.
-Refreshing native plugins compatible for Editor in 58.91 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 34.87 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2021.3.45f2 (88f88f591b2e)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2021.3.45f2/Editor/Data/Resources/UnitySubsystems
@@ -68,160 +68,98 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2021.3.45f2/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2021.3.45f2/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/2021.3.45f2/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56672
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56560
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.3.45f2/Editor/Data/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.3.45f2/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.3.45f2/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.015359 seconds.
+Registered in 0.010526 seconds.
 Native extension for WindowsStandalone target not found
 Native extension for Android target not found
-Android Extension - Scanning For ADB Devices 350 ms
+Android Extension - Scanning For ADB Devices 295 ms
 Native extension for OSXStandalone target not found
-Refreshing native plugins compatible for Editor in 22.68 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 16.43 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.845 seconds
+- Completed reload, in  0.723 seconds
 Domain Reload Profiling:
-	ReloadAssembly (846ms)
-		BeginReloadAssembly (103ms)
+	ReloadAssembly (723ms)
+		BeginReloadAssembly (82ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (0ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (0ms)
-		EndReloadAssembly (654ms)
-			LoadAssemblies (101ms)
+		EndReloadAssembly (566ms)
+			LoadAssemblies (81ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (79ms)
+			SetupTypeCache (71ms)
 			ReleaseScriptCaches (0ms)
-			RebuildScriptCaches (16ms)
-			SetupLoadedEditorAssemblies (524ms)
+			RebuildScriptCaches (15ms)
+			SetupLoadedEditorAssemblies (451ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (407ms)
+				InitializePlatformSupportModulesInManaged (347ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (23ms)
+				RefreshPlugins (17ms)
 				BeforeProcessingInitializeOnLoad (1ms)
-				ProcessInitializeOnLoadAttributes (63ms)
-				ProcessInitializeOnLoadMethodAttributes (31ms)
+				ProcessInitializeOnLoadAttributes (57ms)
+				ProcessInitializeOnLoadMethodAttributes (29ms)
 				AfterProcessingInitializeOnLoad (0ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (0ms)
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.008960 seconds.
+Registered in 0.007164 seconds.
 Begin MonoManager ReloadAssembly
 Symbol file LoadedFromMemory is not a mono symbol file
 Native extension for WindowsStandalone target not found
 Native extension for Android target not found
 Native extension for OSXStandalone target not found
-Refreshing native plugins compatible for Editor in 0.42 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 0.47 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Package Manager log level set to [2]
 [Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
 [Package Manager] Cannot connect to Unity Package Manager local server
 Mono: successfully reloaded assembly
-- Completed reload, in  1.195 seconds
+- Completed reload, in  1.097 seconds
 Domain Reload Profiling:
-	ReloadAssembly (1196ms)
-		BeginReloadAssembly (134ms)
+	ReloadAssembly (1098ms)
+		BeginReloadAssembly (113ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (4ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (19ms)
-		EndReloadAssembly (971ms)
-			LoadAssemblies (124ms)
+			CreateAndSetChildDomain (16ms)
+		EndReloadAssembly (910ms)
+			LoadAssemblies (100ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (135ms)
+			SetupTypeCache (122ms)
 			ReleaseScriptCaches (0ms)
-			RebuildScriptCaches (25ms)
-			SetupLoadedEditorAssemblies (698ms)
+			RebuildScriptCaches (27ms)
+			SetupLoadedEditorAssemblies (670ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (18ms)
+				InitializePlatformSupportModulesInManaged (14ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (0ms)
-				BeforeProcessingInitializeOnLoad (54ms)
-				ProcessInitializeOnLoadAttributes (525ms)
-				ProcessInitializeOnLoadMethodAttributes (86ms)
-				AfterProcessingInitializeOnLoad (14ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (48ms)
+				ProcessInitializeOnLoadAttributes (514ms)
+				ProcessInitializeOnLoadMethodAttributes (83ms)
+				AfterProcessingInitializeOnLoad (10ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (8ms)
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.05 seconds
-Refreshing native plugins compatible for Editor in 0.73 ms, found 2 plugins.
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.06 seconds
+Refreshing native plugins compatible for Editor in 0.43 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 2369 Unused Serialized files (Serialized files now loaded: 0)
 Unloading 52 unused Assets / (46.4 KB). Loaded Objects now: 2812.
 Memory consumption went from 88.6 MB to 88.5 MB.
-Total: 4.995900 ms (FindLiveObjects: 0.183400 ms CreateObjectMapping: 0.038500 ms MarkObjects: 4.721400 ms  DeleteObjects: 0.051900 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
-  custom:CustomObjectIndexerAttribute: bc11b3a6c3213fcdd17b65e7da85e133 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.007916 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory is not a mono symbol file
-Native extension for WindowsStandalone target not found
-Native extension for Android target not found
-Native extension for OSXStandalone target not found
-Refreshing native plugins compatible for Editor in 0.54 ms, found 2 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
-[Package Manager] Cannot connect to Unity Package Manager local server
-Mono: successfully reloaded assembly
-- Completed reload, in  1.247 seconds
-Domain Reload Profiling:
-	ReloadAssembly (1248ms)
-		BeginReloadAssembly (158ms)
-			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (3ms)
-			BackupInstance (0ms)
-			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (31ms)
-		EndReloadAssembly (1004ms)
-			LoadAssemblies (132ms)
-			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (141ms)
-			ReleaseScriptCaches (1ms)
-			RebuildScriptCaches (27ms)
-			SetupLoadedEditorAssemblies (714ms)
-				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (22ms)
-				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (1ms)
-				BeforeProcessingInitializeOnLoad (54ms)
-				ProcessInitializeOnLoadAttributes (533ms)
-				ProcessInitializeOnLoadMethodAttributes (89ms)
-				AfterProcessingInitializeOnLoad (15ms)
-				EditorAssembliesLoaded (0ms)
-			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (10ms)
-Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.68 ms, found 2 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2363 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 43 unused Assets / (21.9 KB). Loaded Objects now: 2815.
-Memory consumption went from 88.2 MB to 88.2 MB.
-Total: 4.839200 ms (FindLiveObjects: 0.149300 ms CreateObjectMapping: 0.036800 ms MarkObjects: 4.624500 ms  DeleteObjects: 0.027900 ms)
+Total: 5.083000 ms (FindLiveObjects: 0.173700 ms CreateObjectMapping: 0.047600 ms MarkObjects: 4.807400 ms  DeleteObjects: 0.053600 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
@@ -238,9 +176,205 @@ AssetImportParameters requested are different than current active one (requested
   custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Import Request.
-  Time since last request: 6351.863444 seconds.
-  path: Assets/Bugker.unity
-  artifactKey: Guid(34a30e2ac243f294cb7bb50f054f0c8b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+  Time since last request: 15526.747256 seconds.
+  path: Assets/Source/BM_SoundManager.cs
+  artifactKey: Guid(838bb8b1daa94e84fa5f5161ffee08a9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
 Number of updated assets reloaded before import = 0
-Start importing Assets/Bugker.unity using Guid(34a30e2ac243f294cb7bb50f054f0c8b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd29999c6fab2818d4704eac719df33a6') in 0.014653 seconds 
+Start importing Assets/Source/BM_SoundManager.cs using Guid(838bb8b1daa94e84fa5f5161ffee08a9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1cf4c758e89ba53e545f1984859235be') in 0.044367 seconds 
 Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 30.335626 seconds.
+  path: Assets/Source/BM_AnimationController.cs
+  artifactKey: Guid(e3d26aeb9f513db4da54a105a33d37b5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Source/BM_AnimationController.cs using Guid(e3d26aeb9f513db4da54a105a33d37b5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '13786638429d2e150f1688549dfff296') in 0.009385 seconds 
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 75.696194 seconds.
+  path: Assets/Imager/Icom
+  artifactKey: Guid(c601f35ec4d606c4dad46845081e1f52) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Imager/Icom using Guid(c601f35ec4d606c4dad46845081e1f52) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '199298cb7711780554b0e06f0ebb43d0') in 0.010494 seconds 
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.524330 seconds.
+  path: Assets/Imager/Word
+  artifactKey: Guid(af3ef7a5dbc5db044ad7eed3b154f8f7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Imager/Word using Guid(af3ef7a5dbc5db044ad7eed3b154f8f7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '70980d5b12d17bf8aca4a1beea29134b') in 0.009408 seconds 
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.506024 seconds.
+  path: Assets/Imager/Icom/BM_B_Burger00.png
+  artifactKey: Guid(8c02836692be19a47b11b5a41f46dbd6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Imager/Icom/BM_B_Burger00.png using Guid(8c02836692be19a47b11b5a41f46dbd6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '71a6fb98429902af51a3471e6e2372f3') in 0.128496 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000014 seconds.
+  path: Assets/Imager/Icom/BM_S_Burger00.png
+  artifactKey: Guid(37a59134658cad241b02a9fd4cd5a313) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Imager/Icom/BM_S_Burger00.png using Guid(37a59134658cad241b02a9fd4cd5a313) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8cb77f7680848561f2e8550f4cb9c81e') in 0.028827 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000015 seconds.
+  path: Assets/Imager/Icom/BM_N_Burger00.png
+  artifactKey: Guid(7d12b7a71fc510048a1de146f51c267c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Imager/Icom/BM_N_Burger00.png using Guid(7d12b7a71fc510048a1de146f51c267c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2330460d0b558f6fd18ee95e12ec57e6') in 0.027748 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000014 seconds.
+  path: Assets/Imager/Icom/BM_Node04.png
+  artifactKey: Guid(da482fb3977056846a6beac69c4d1590) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Imager/Icom/BM_Node04.png using Guid(da482fb3977056846a6beac69c4d1590) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'acf74570e5e0d393041d87713444602a') in 0.021122 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000014 seconds.
+  path: Assets/Imager/Icom/BM_S_Burger05.png
+  artifactKey: Guid(87939e13a4c46d0419e41bc7d52cfcbc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Imager/Icom/BM_S_Burger05.png using Guid(87939e13a4c46d0419e41bc7d52cfcbc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd52bc0d7b7e742aaffba6fa6c42a7aa3') in 0.020596 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000029 seconds.
+  path: Assets/Imager/Icom/BM_P_Burger02.png
+  artifactKey: Guid(9291365af4d917845b97d44e0eef9d32) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Imager/Icom/BM_P_Burger02.png using Guid(9291365af4d917845b97d44e0eef9d32) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '33e8bcf81fb1a9aa279f4896c309f384') in 0.021992 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000013 seconds.
+  path: Assets/Imager/Icom/BM_P_Burger05.png
+  artifactKey: Guid(14fb838abf714d84798ef4dec6b7cfa1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Imager/Icom/BM_P_Burger05.png using Guid(14fb838abf714d84798ef4dec6b7cfa1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ea39def0421e6b4a98e59c5ecfa2dfbf') in 0.017936 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000013 seconds.
+  path: Assets/Imager/Icom/BM_S_Burger03.png
+  artifactKey: Guid(f0dfdb5d5cbcc344bb0177e204809dbe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Imager/Icom/BM_S_Burger03.png using Guid(f0dfdb5d5cbcc344bb0177e204809dbe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '15c3b0513f22ff89425d83318b393e41') in 0.018504 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000012 seconds.
+  path: Assets/Imager/Icom/BM_Node06.png
+  artifactKey: Guid(1fb1dd591bcb4df4288ecec81a9a9d41) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Imager/Icom/BM_Node06.png using Guid(1fb1dd591bcb4df4288ecec81a9a9d41) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7a96b341359cfd5e47c70a9e5524fdce') in 0.022954 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000014 seconds.
+  path: Assets/Imager/Icom/BM_Node09.png
+  artifactKey: Guid(b70b616a557146c4597191fc701b2806) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Imager/Icom/BM_Node09.png using Guid(b70b616a557146c4597191fc701b2806) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0766ba8e457647d66940ad01273e4208') in 0.021112 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000012 seconds.
+  path: Assets/Imager/Icom/BM_B_Burger04.png
+  artifactKey: Guid(41adf9e2427214f41afb3556bfa70be0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Imager/Icom/BM_B_Burger04.png using Guid(41adf9e2427214f41afb3556bfa70be0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '11c62cac99a19a538c2604df0dcbaa14') in 0.016753 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000012 seconds.
+  path: Assets/Imager/Icom/BM_N_Burger02.png
+  artifactKey: Guid(1ee962e7c1921f045a725468544c7158) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Imager/Icom/BM_N_Burger02.png using Guid(1ee962e7c1921f045a725468544c7158) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '544f592de6594412f15272dd557b02de') in 0.016439 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000011 seconds.
+  path: Assets/Imager/Icom/BM_B_Burger05.png
+  artifactKey: Guid(252d4cbdd09959947a40682cd603d952) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Imager/Icom/BM_B_Burger05.png using Guid(252d4cbdd09959947a40682cd603d952) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ebe9931a4e6330ab1786c2531069c29e') in 0.016853 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000012 seconds.
+  path: Assets/Imager/Icom/BM_N_Burger01.png
+  artifactKey: Guid(cedc193d7bbec9841a0ae986692c4a04) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Imager/Icom/BM_N_Burger01.png using Guid(cedc193d7bbec9841a0ae986692c4a04) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ebda3387d269d2c462303268cff39505') in 0.016136 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000014 seconds.
+  path: Assets/Imager/Icom/BM_Node07.png
+  artifactKey: Guid(86e4b6c78da50db4598dd777e7cb68df) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Imager/Icom/BM_Node07.png using Guid(86e4b6c78da50db4598dd777e7cb68df) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '220265f426327d2fa9ef6237b3e560cb') in 0.015245 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000012 seconds.
+  path: Assets/Imager/Icom/BM_S_Burger01.png
+  artifactKey: Guid(788e10a18e872ff4495fa4c18ee8955c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Imager/Icom/BM_S_Burger01.png using Guid(788e10a18e872ff4495fa4c18ee8955c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd15648e13603a7921fa6da6a8e9d7b20') in 0.016778 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000013 seconds.
+  path: Assets/Imager/Icom/BM_Node12.png
+  artifactKey: Guid(3e3b86f11d5f3c04eba5a3e723e6e1d8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Imager/Icom/BM_Node12.png using Guid(3e3b86f11d5f3c04eba5a3e723e6e1d8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cdc157fc3f393b1a62d7fa0609797792') in 0.016109 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/Imager/Icom/BM_P_Burger04.png
+  artifactKey: Guid(03391fadf5c40c84db0afae321af9ec5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Imager/Icom/BM_P_Burger04.png using Guid(03391fadf5c40c84db0afae321af9ec5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fc298f9c095f56d3f08d4410fa99bde3') in 0.016001 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000010 seconds.
+  path: Assets/Imager/Icom/BM_P_Burger01.png
+  artifactKey: Guid(1b66c45a41ec3c242abcfe44c7cabe8e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Imager/Icom/BM_P_Burger01.png using Guid(1b66c45a41ec3c242abcfe44c7cabe8e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a890554c85a62d1d1fe41d47599ed034') in 0.015265 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000013 seconds.
+  path: Assets/Imager/Icom/BM_N_Burger06.png
+  artifactKey: Guid(a69a90e1d82dd164f8f63758307b969a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Imager/Icom/BM_N_Burger06.png using Guid(a69a90e1d82dd164f8f63758307b969a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '002e7c676cdd46ba5e1a9b9cf9d76070') in 0.015083 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000013 seconds.
+  path: Assets/Imager/Icom/BM_N_Burger03.png
+  artifactKey: Guid(f05325af057dcee499ef9cc422b5e347) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Imager/Icom/BM_N_Burger03.png using Guid(f05325af057dcee499ef9cc422b5e347) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '66692d13ac7c6ce004db2af24342d0dc') in 0.015797 seconds 
+Number of asset objects unloaded after import = 3
+Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
+AssetImportWorker is now disconnected from the server
+Process exiting
+Exiting without the bug reporter. Application will terminate with return code 0
